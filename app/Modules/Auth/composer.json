@@ -17,7 +17,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Modules\\Auth\\": ""
+            "App\\Modules\\Auth\\": ""
         }
     }
 }

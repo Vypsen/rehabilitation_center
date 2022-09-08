@@ -1,0 +1,193 @@
+{
+    "openapi": "3.0.2",
+    "info": {
+        "title": "Laravel",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http:\/\/localhost"
+        }
+    ],
+    "paths": {
+        "\/api\/user": {
+            "get": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "isUser",
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application\/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#\/components\/schemas\/User"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        },
+        "\/api\/auth\/register": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "register user",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "user name",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "user"
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "email user",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "user@gmail.com"
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "description": "password user",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    },
+                    "422": {
+                        "$ref": "#\/components\/responses\/ErrorValidation"
+                    }
+                }
+            }
+        },
+        "\/api\/auth\/login": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "login user",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "email user",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "user@gmail.com"
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "description": "password user",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "$ref": "#\/components\/responses\/UserToken"
+                    },
+                    "422": {
+                        "$ref": "#\/components\/responses\/ErrorValidation"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        },
+        "\/api\/auth\/logout": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "logout user",
+                "responses": {
+                    "200": {
+                        "description": "Successful logout"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "User": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "responses": {
+            "ErrorValidation": {
+                "description": "Validation errors",
+                "content": {
+                    "application\/json": {
+                        "schema": {
+                            "type": "array",
+                            "example": {
+                                "name": [
+                                    "Something is wrong with this field!"
+                                ]
+                            }
+                        }
+                    }
+                }
+            },
+            "UserToken": {
+                "description": "User Token",
+                "content": {
+                    "application\/json": {
+                        "schema": {
+                            "type": "object",
+                            "example": {
+                                "token": "token_string"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

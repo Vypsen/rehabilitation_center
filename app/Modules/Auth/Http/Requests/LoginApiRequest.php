@@ -1,11 +1,11 @@
 <?php
 
-namespace Modules\Auth\Http\Requests;
+namespace App\Modules\Auth\Http\Requests;
 
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class RegisterApiRequest extends RegisterFormRequest
+class LoginApiRequest extends LoginFormRequest
 {
     protected function failedValidation(Validator $validator)
     {
