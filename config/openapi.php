@@ -22,12 +22,14 @@ return [
             ],
 
             'tags' => [
-
-                // [
-                //    'name' => 'user',
-                //    'description' => 'Application users',
-                // ],
-
+                 [
+                    'name' => 'auth',
+                    'description' => 'auth',
+                 ],
+                 [
+                    'name' => 'blog',
+                    'description' => 'blog',
+                 ],
             ],
 
             'security' => [

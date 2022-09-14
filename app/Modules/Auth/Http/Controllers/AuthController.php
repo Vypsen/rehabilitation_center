@@ -3,21 +3,21 @@
 namespace App\Modules\Auth\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Modules\Auth\Http\Requests\LoginApiRequest;
 use App\Modules\Auth\Http\Requests\RegisterApiRequest;
-use App\OpenApi\Parameters\LoginParameters;
-use App\OpenApi\Parameters\RegisterParameters;
-use App\OpenApi\Responses\FailedValidationResponse;
-use App\OpenApi\Responses\GetUserResponse;
-use App\OpenApi\Responses\LoginResponse;
-use App\OpenApi\Responses\LogoutUserResponse;
-use App\OpenApi\Responses\NotFoundUserResponse;
-use App\OpenApi\Responses\RegisterResponse;
+use App\OpenApi\Parameters\Auth\LoginParameters;
+use App\OpenApi\Parameters\Auth\RegisterParameters;
+use App\OpenApi\Responses\Auth\FailedValidationResponse;
+use App\OpenApi\Responses\Auth\GetUserResponse;
+use App\OpenApi\Responses\Auth\LoginResponse;
+use App\OpenApi\Responses\Auth\LogoutUserResponse;
+use App\OpenApi\Responses\Auth\NotFoundUserResponse;
+use App\OpenApi\Responses\Auth\RegisterResponse;
 use Auth;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Request;
-use App\Models\User;
 use Vyuldashev\LaravelOpenApi\Attributes as OpenApi;
 
 #[OpenApi\PathItem]

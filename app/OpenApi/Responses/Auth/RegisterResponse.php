@@ -1,6 +1,6 @@
 <?php
 
-namespace App\OpenApi\Responses;
+namespace App\OpenApi\Responses\Auth;
 
 use GoldSpecDigital\ObjectOrientedOAS\Objects\Response;
 use Vyuldashev\LaravelOpenApi\Factories\ResponseFactory;

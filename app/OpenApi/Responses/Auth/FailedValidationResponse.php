@@ -1,6 +1,6 @@
 <?php
 
-namespace App\OpenApi\Responses;
+namespace App\OpenApi\Responses\Auth;
 
 use GoldSpecDigital\ObjectOrientedOAS\Objects\MediaType;
 use GoldSpecDigital\ObjectOrientedOAS\Objects\Response;
@@ -8,14 +8,14 @@ use GoldSpecDigital\ObjectOrientedOAS\Objects\Schema;
 use Vyuldashev\LaravelOpenApi\Contracts\Reusable;
 use Vyuldashev\LaravelOpenApi\Factories\ResponseFactory;
 
-class LoginResponse extends ResponseFactory implements Reusable
+class FailedValidationResponse extends ResponseFactory implements Reusable
 {
     public function build(): Response
     {
-        $response = Schema::object()->example(['token' => 'token_string']);
+        $response = Schema::array()->example(['name' => ['Something is wrong with this field!']]);
 
-        return Response::create('UserToken')
-            ->description('User Token')
+        return Response::create('ErrorValidation')
+            ->description('Validation errors')
             ->content(
                 MediaType::json()->schema($response)
             );
