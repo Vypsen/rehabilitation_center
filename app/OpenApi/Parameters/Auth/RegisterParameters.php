@@ -1,12 +1,12 @@
 <?php
 
-namespace App\OpenApi\Parameters;
+namespace App\OpenApi\Parameters\Auth;
 
 use GoldSpecDigital\ObjectOrientedOAS\Objects\Parameter;
 use GoldSpecDigital\ObjectOrientedOAS\Objects\Schema;
 use Vyuldashev\LaravelOpenApi\Factories\ParametersFactory;
 
-class LoginParameters extends ParametersFactory
+class RegisterParameters extends ParametersFactory
 {
     /**
      * @return Parameter[]
@@ -14,6 +14,13 @@ class LoginParameters extends ParametersFactory
     public function build(): array
     {
         return [
+            Parameter::query()
+                ->name('name')
+                ->description('user name')
+                ->required(true)
+                ->schema(Schema::string())
+                ->example("user"),
+
             Parameter::query()
                 ->name('email')
                 ->description('email user')

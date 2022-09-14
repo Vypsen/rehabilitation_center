@@ -1,8 +1,8 @@
 <?php
 
-namespace App\OpenApi\Responses;
+namespace App\OpenApi\Responses\Auth;
 
-use App\OpenApi\Schemas\UserSchema;
+use App\OpenApi\Schemas\Auth\UserSchema;
 use GoldSpecDigital\ObjectOrientedOAS\Objects\MediaType;
 use GoldSpecDigital\ObjectOrientedOAS\Objects\Response;
 use GoldSpecDigital\ObjectOrientedOAS\Objects\Schema;
