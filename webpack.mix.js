@@ -1,10 +1,19 @@
 const mix = require('laravel-mix');
+const tailwindcss = require('tailwindcss');
+require('mix-tailwindcss');
+const path = require('path');
 
 
 
-mix.js('resources/js/app.js', 'public/js')
+mix.js('resources/app.js', 'public/js')
     .vue()
-    .sass('resources/sass/app.scss', 'public/css')
-    .postCss('resources/css/app.css', 'public/css', [
-        //
-    ]);
+    .css('resources/css/app.css', 'public/css')
+
+    .options({
+        css: [tailwindcss('tailwind.config.js')],
+    })
+    .tailwind();
+
+mix.alias({
+    '@': path.join(__dirname, 'resources')
+});
