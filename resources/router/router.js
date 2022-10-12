@@ -1,25 +1,35 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Dashboard from '../components/Dashboard.vue'
 import Login from '../components/Login.vue'
 import Register from '../components/Register.vue'
+import Header from '../components/Header.vue'
+import store from '../store'
+import Dashboard from "../components/Dashboard";
+import AuthLayout from "../components/AuthLayout";
+
 
 
 const routes = [
     {
-        path: '/login',
-        name: 'Login',
-        component: Login,
+        path: '/',
+        redirect: '/dashboard',
+        component: Header,
+        meta: {requiresAuth: true},
+        children: [
+            {path: '/dashboard', name: 'Dashboard', component: Dashboard},
+        ]
     },
     {
-        path: '/dashboard',
-        name: 'Dashboard',
-        component: Dashboard,
+        path: '/auth',
+        redirect: '/login',
+        name: 'Auth',
+        component: AuthLayout,
+        meta: {isGuest: true},
+        children:[
+            {path: '/login', name: 'Login', component: Login},
+            {path: '/register', name: 'Register', component: Register},
+        ]
     },
-    {
-        path: '/register',
-        name: 'Register',
-        component: Register,
-    }
+
 ];
 
 const router = createRouter(
@@ -28,5 +38,15 @@ const router = createRouter(
         routes
     }
 )
+
+router.beforeEach((to, from, next)=>{
+    if (to.meta.requiresAuth && !store.state.user.token){
+        next({name: 'Login'})
+    } else if (store.state.user.token && (to.name === 'Login' || to.name === 'Register')) {
+        next({name: 'Dashboard'});
+    } else {
+        next();
+    }
+})
 
 export default router;

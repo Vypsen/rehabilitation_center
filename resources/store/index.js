@@ -10,6 +10,7 @@ import {createStore} from 'vuex';
     getters: {},
     mutations: {},
     actions: {},
+    modules: {},
 });
 
 export default store;
