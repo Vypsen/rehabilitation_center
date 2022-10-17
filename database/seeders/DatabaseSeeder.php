@@ -15,6 +15,6 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         User::query()->delete();
-        User::factory(random_int(15,30))->create();
+        User::factory(random_int(10,30))->create();
     }
 }

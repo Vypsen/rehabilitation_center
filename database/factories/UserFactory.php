@@ -18,9 +18,13 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'name' => fake()->name(),
+            'name' => fake()->firstName(),
+            'lastname' => fake()->lastName(),
+            'patronymic' => fake()->name(),
+            'number_phone'=>fake()->phoneNumber(),
+            'age' => fake()->numberBetween(10,120),
             'email' => fake()->safeEmail(),
-            'email_verified_at' => now(),
+            'registration_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
         ];
