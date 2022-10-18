@@ -37,6 +37,16 @@ use Laravel\Sanctum\HasApiTokens;
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property string $lastname
+ * @property string $patronymic
+ * @property string $number_phone
+ * @property int $age
+ * @property \Illuminate\Support\Carbon|null $registration_at
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereAge($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereLastname($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereNumberPhone($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User wherePatronymic($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereRegistrationAt($value)
  */
 class User extends Authenticatable
 {
@@ -49,6 +59,10 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'lastname',
+        'patronymic',
+        'number_phone',
+        'age',
         'email',
         'password',
     ];
@@ -69,12 +83,15 @@ class User extends Authenticatable
      * @var array<string, string>
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
+        'registration_at' => 'datetime',
     ];
 
     public static function createFormRequest(array $requestData) : self {
         $user = new self();
         $user->name = $requestData['name'];
+        $user->lastname = $requestData['lastname'];
+        $user->patronymic = $requestData['patronymic'];
+        $user->age = $requestData['age'];
         $user->email = $requestData['email'];
         $user->password = Hash::make($requestData['password']);
         $user->save();
