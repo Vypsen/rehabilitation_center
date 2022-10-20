@@ -16,6 +16,7 @@ import {createStore} from 'vuex';
         setUser: (state, userData) => {
             state.user.token = userData.token;
             state.user.token = userData.user;
+            sessionStorage.setItem("TOKEN", userData.token)
         }
     },
     actions: {
