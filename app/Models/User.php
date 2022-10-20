@@ -62,7 +62,7 @@ class User extends Authenticatable
         'lastname',
         'patronymic',
         'number_phone',
-        'age',
+        'date_of_birth',
         'email',
         'password',
     ];
@@ -91,7 +91,8 @@ class User extends Authenticatable
         $user->name = $requestData['name'];
         $user->lastname = $requestData['lastname'];
         $user->patronymic = $requestData['patronymic'];
-        $user->age = $requestData['age'];
+        $user->date_of_birth = $requestData['date_of_birth'];
+        $user->number_phone = $requestData['number_phone'];
         $user->email = $requestData['email'];
         $user->password = Hash::make($requestData['password']);
         $user->save();

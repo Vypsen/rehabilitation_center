@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('lastname');
             $table->string('patronymic');
             $table->string('number_phone');
-            $table->unsignedSmallInteger('age');
+            $table->date('date_of_birth');
             $table->string('email')->unique();
             $table->string('password');
             $table->timestamp('registration_at')->nullable();

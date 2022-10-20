@@ -50,7 +50,6 @@ class AuthController extends Controller
     public function register(RegisterApiRequest $request)
     {
         $data = $request->validated();
-
         $user = User::createFormRequest($data);
 
         $authToken = $user->createToken('authToken')->plainTextToken;

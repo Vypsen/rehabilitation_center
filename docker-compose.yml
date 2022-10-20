@@ -30,11 +30,10 @@ services:
         ports:
             - '5432:5432'
         environment:
+            PGPASSWORD: '${DB_PASSWORD:-secret}'
             POSTGRES_DB: '${DB_DATABASE}'
             POSTGRES_USER: '${DB_USERNAME}'
             POSTGRES_PASSWORD: '${DB_PASSWORD:-secret}'
-            POSTGRES_HOST: ${POSTGRES_HOST:-postgres}
-            POSTGRES_HOST_AUTH_METHOD: trust
         volumes:
             - 'sail-pgsql:/var/lib/postgresql/data'
         networks:
