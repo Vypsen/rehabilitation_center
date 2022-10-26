@@ -10,7 +10,7 @@ use App\OpenApi\Parameters\Auth\LoginParameters;
 use App\OpenApi\Parameters\Auth\RegisterParameters;
 use App\OpenApi\Responses\Auth\FailedValidationResponse;
 use App\OpenApi\Responses\Auth\GetUserResponse;
-use App\OpenApi\Responses\Auth\LoginResponse;
+use App\OpenApi\Responses\Auth\UserTokenResponse;
 use App\OpenApi\Responses\Auth\LogoutUserResponse;
 use App\OpenApi\Responses\Auth\NotFoundUserResponse;
 use App\OpenApi\Responses\Auth\RegisterResponse;
@@ -34,7 +34,7 @@ class AuthController extends Controller
     #[OpenApi\Response(NotFoundUserResponse::class, statusCode: 401)]
     public function isUser(Request $request)
     {
-        return $request->user;
+        return $request->user();
     }
 
     /**
@@ -45,7 +45,7 @@ class AuthController extends Controller
      */
     #[OpenApi\Operation(tags: ['auth'], method: 'POST')]
     #[OpenApi\Parameters(RegisterParameters::class)]
-    #[OpenApi\Response(RegisterResponse::class, statusCode: 200)]
+    #[OpenApi\Response(UserTokenResponse::class, statusCode: 200)]
     #[OpenApi\Response(FailedValidationResponse::class, statusCode: 422)]
     public function register(RegisterApiRequest $request)
     {
@@ -55,6 +55,7 @@ class AuthController extends Controller
         $authToken = $user->createToken('authToken')->plainTextToken;
 
         return response()->json([
+            'user' => $user,
             'authToken' => $authToken,
         ]);
     }
@@ -67,7 +68,7 @@ class AuthController extends Controller
      */
     #[OpenApi\Operation(tags: ['auth'], method: 'POST')]
     #[OpenApi\Parameters(LoginParameters::class)]
-    #[OpenApi\Response(LoginResponse::class, statusCode: 200)]
+    #[OpenApi\Response(UserTokenResponse::class, statusCode: 200)]
     #[OpenApi\Response(FailedValidationResponse::class, statusCode: 422)]
     #[OpenApi\Response(NotFoundUserResponse::class, statusCode: 401)]
     public function login(LoginApiRequest $request)
@@ -88,7 +89,7 @@ class AuthController extends Controller
             $authToken = $user->createToken('authToken')->plainTextToken;
 
             return response()->json([
-                'email' => $user['email'],
+                'user' => $user,
                 'authToken' => $authToken,
             ]);
         }

@@ -10,7 +10,7 @@
                 </router-link>
             </p>
         </div>
-    <form class="mt-8 space-y-6" @submit="register">
+        <form class="mt-8 space-y-6" @submit="register">
           <div class="-space-y-px rounded-md shadow-sm">
             <div class="pb-1">
               <label for="email-address" class="sr-only">Фамилия</label>
@@ -49,7 +49,8 @@
             </div>
           </div>
           <div>
-            <button type="submit" class="group relative flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+            <button type="submit"
+                    class="group relative flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
               Зарегистрироваться
             </button>
           </div>
@@ -75,6 +76,9 @@
         ev.preventDefault();
         store
             .dispatch('register', user)
+            .then(()=>{
+                console.log('123456')
+            })
             .then(() => {
                 router.push({
                     name: 'Dashboard'

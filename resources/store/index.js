@@ -1,4 +1,5 @@
 import {createStore} from 'vuex';
+import createPersistedState from 'vuex-persistedstate'
 
  const store = createStore({
     state: {
@@ -12,33 +13,57 @@ import {createStore} from 'vuex';
         logout: (state) => {
             state.user.token = null;
             state.user.data = {};
+            sessionStorage.removeItem("TOKEN")
         },
         setUser: (state, userData) => {
-            state.user.token = userData.token;
-            state.user.token = userData.user;
-            sessionStorage.setItem("TOKEN", userData.token)
+            state.user.data = userData.user
+            state.user.token = userData.authToken;
+            sessionStorage.setItem("TOKEN", userData.authToken)
         }
     },
     actions: {
-        register({commit}, user){
+        async register({commit}, user){
             console.log(user)
-            axios
-                .post("http://localhost:80/api/auth/register",
-                    user
-                )
-                .then(response => {
-                    console.log("response", response);
-                })
-                .then(response => {
-                    commit("setUser", user);
-                    return response;
-                })
-                .catch(error => {
-                    console.log("error", error);
-                });
+            try {
+                let req = await axios
+                    .post("http://localhost:80/api/auth/register",
+                        user
+                    )
+                commit("setUser", req.data);
+            }
+            catch(error){
+                console.log("error", error);
+            }
+        },
+        async login({commit}, user){
+            console.log(user)
+            try {
+                let req = await axios
+                    .post("http://localhost:80/api/auth/login",
+                        user
+                    )
+                commit("setUser", req.data);
+            }
+            catch(error){
+                console.log("error", error);
+            }
+        },
+        async logout({commit}){
+            try {
+                let req = await axios.post("http://localhost:80/api/logout")
+                commit("logout");
+                return req;
+            }
+            catch(error){
+                console.log("error", error);
+            }
+
         },
     },
     modules: {},
+     plugins: [
+         createPersistedState()
+     ]
 });
 
 export default store;

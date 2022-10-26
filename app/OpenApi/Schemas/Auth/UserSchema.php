@@ -20,10 +20,14 @@ class UserSchema extends SchemaFactory implements Reusable
     {
         return Schema::object('User')
             ->properties(
-                Schema::string('id')->default(null),
+                Schema::integer('id')->default(null),
                 Schema::string('name')->default(null),
+                Schema::string('lastname')->default(null),
+                Schema::string('patronymic')->default(null),
+                Schema::string('number_phone')->default(null),
+                Schema::string('date_of_birth')->format(Schema::FORMAT_DATE)->default(null),
                 Schema::string('email')->default(null),
-                Schema::string('password')->default(null),
+                Schema::string('password')->format(Schema::FORMAT_PASSWORD)->default(null),
             );
     }
 }
