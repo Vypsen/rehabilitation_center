@@ -4,6 +4,7 @@ namespace App\Modules\Auth\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Modules\Auth\Enums\RolesType;
 use App\Modules\Auth\Http\Requests\LoginApiRequest;
 use App\Modules\Auth\Http\Requests\RegisterApiRequest;
 use App\OpenApi\Parameters\Auth\LoginParameters;
@@ -32,7 +33,7 @@ class AuthController extends Controller
     #[OpenApi\Operation(tags: ['auth'], method: 'GET')]
     #[OpenApi\Response(GetUserResponse::class, statusCode: 200)]
     #[OpenApi\Response(NotFoundUserResponse::class, statusCode: 401)]
-    public function isUser(Request $request)
+    public function getUser(Request $request)
     {
         return $request->user();
     }
@@ -51,9 +52,12 @@ class AuthController extends Controller
     {
         $data = $request->validated();
         $user = User::createFormRequest($data);
-
         $authToken = $user->createToken('authToken')->plainTextToken;
-
+        if ($user->id === 1){
+            $user->role = RolesType::ADMIN;
+        }else{
+            $user->role = RolesType::PATIENT;
+        }
         return response()->json([
             'user' => $user,
             'authToken' => $authToken,
@@ -74,7 +78,9 @@ class AuthController extends Controller
     public function login(LoginApiRequest $request)
     {
         $data = $request->validated();
-        $user = User::query()->where('email', $data['email'])->first();
+        $user = User::query()
+            ->where('email', $data['email'])
+            ->first();
         if(!$user){
             return response()->json([
                 $data['email'] => 'user not found',
