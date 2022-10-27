@@ -57,7 +57,16 @@ import createPersistedState from 'vuex-persistedstate'
             catch(error){
                 console.log("error", error);
             }
-
+        },
+        async getUser({commit}){
+            try {
+                let req = await axios.post("http://localhost:80/api/user")
+                commit("setUser", req.data);
+                return req;
+            }
+            catch(error){
+                console.log("error", error);
+            }
         },
     },
     modules: {},

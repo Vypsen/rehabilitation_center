@@ -56,6 +56,7 @@
                         <div class="ml-3">
                             <div class="text-base font-medium leading-none text-white">{{ user.name }}</div>
                             <div class="text-sm font-medium leading-none text-gray-400">{{ user.email }}</div>
+                            <div class="text-sm font-medium leading-none text-gray-400">{{ user.role }}</div>
                         </div>
                     </div>
                     <div class="mt-3 space-y-1 px-2">
@@ -105,6 +106,7 @@ export default {
                 })
 
         }
+        store.dispatch("getUser");
         return{
             user: computed(() => store.state.user.data),
             navigation,

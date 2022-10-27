@@ -52,12 +52,15 @@ class AuthController extends Controller
     {
         $data = $request->validated();
         $user = User::createFormRequest($data);
-        $authToken = $user->createToken('authToken')->plainTextToken;
+
         if ($user->id === 1){
             $user->role = RolesType::ADMIN;
+            $authToken = $user->createToken('authToken', ['admin'])->plainTextToken;
         }else{
             $user->role = RolesType::PATIENT;
+            $authToken = $user->createToken('authToken', ['patient'])->plainTextToken;
         }
+
         return response()->json([
             'user' => $user,
             'authToken' => $authToken,
@@ -89,10 +92,15 @@ class AuthController extends Controller
 
         if (Auth::attempt($data, true)) {
             $user = Auth::user();
-
             $user->save();
 
-            $authToken = $user->createToken('authToken')->plainTextToken;
+            if ($user->role === RolesType::ADMIN){
+                $authToken = $user->createToken('authToken', ['admin'])->plainTextToken;
+            }else if($user->role === RolesType::DOCTOR){
+                $authToken = $user->createToken('authToken', ['doctor'])->plainTextToken;
+            }else{
+                $authToken = $user->createToken('authToken', ['patient'])->plainTextToken;
+            }
 
             return response()->json([
                 'user' => $user,
