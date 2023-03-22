@@ -3,8 +3,8 @@ import Login from '../components/Login.vue'
 import Register from '../components/Register.vue'
 import Header from '../components/Header.vue'
 import store from '../store'
-import Dashboard from "../components/Dashboard";
-import AuthLayout from "../components/AuthLayout";
+import Dashboard from "../components/Dashboard.vue";
+import AuthLayout from "../components/AuthLayout.vue";
 
 
 
