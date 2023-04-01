@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Modules\User\Database\Seeders\SeedFakeMobilityTableSeeder;
+use App\Modules\User\Database\Seeders\UserSeeder;
 use App\Modules\User\Entities\User;
 use Illuminate\Database\Seeder;
 
@@ -14,7 +16,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        User::query()->delete();
-        User::factory(random_int(10,30))->create();
+        $this->call([
+            UserSeeder::class,
+            SeedFakeMobilityTableSeeder::class
+        ]);
     }
 }

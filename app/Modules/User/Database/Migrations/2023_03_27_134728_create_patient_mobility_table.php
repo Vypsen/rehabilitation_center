@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('patient_mobility', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')
+            $table->integer('id_user')->unsigned();
+            $table->foreign('id_user')
                 ->references('id')->on('users')
                 ->cascadeOnDelete();
 
@@ -36,7 +36,7 @@ return new class extends Migration
             $table->boolean('ladder');
             $table->boolean('running');
 
-            $table->integer('edate');
+            $table->timestamps();
         });
     }
 

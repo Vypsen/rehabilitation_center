@@ -35,7 +35,6 @@ use Laravel\Sanctum\HasApiTokens;
  * @method static \Illuminate\Database\Eloquent\Builder|User wherePassword($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
- * @mixin \Eloquent
  * @property string $lastname
  * @property string $patronymic
  * @property string $number_phone
@@ -46,6 +45,11 @@ use Laravel\Sanctum\HasApiTokens;
  * @method static \Illuminate\Database\Eloquent\Builder|User whereNumberPhone($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User wherePatronymic($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRegistrationAt($value)
+ * @property int $bdate
+ * @property int $role
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereBdate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereRole($value)
+ * @mixin \Eloquent
  */
 class User extends Authenticatable
 {

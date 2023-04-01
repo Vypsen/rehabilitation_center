@@ -37,6 +37,7 @@ class MobilityFactory extends Factory
             'washes' => fake()->boolean(),
             'ladder' => fake()->boolean(),
             'running' => fake()->boolean(),
+            'sdate' => now(),
             'edate' => 0,
         ];
     }
