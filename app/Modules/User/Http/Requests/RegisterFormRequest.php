@@ -20,7 +20,7 @@ class RegisterFormRequest extends FormRequest
             'number_phone' => ['required', 'max:255'],
             'date_of_birth' => ['required', 'max:255'],
             'email' => ['required', 'email', 'unique:users'],
-            'password' => ['required', 'min:1|max:255'],
+            'password' => ['required'],
         ];
     }
 

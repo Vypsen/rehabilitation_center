@@ -96,7 +96,7 @@ class User extends Authenticatable
         $user->name = $requestData['name'];
         $user->lastname = $requestData['lastname'];
         $user->patronymic = $requestData['patronymic'];
-        $user->date_of_birth = $requestData['date_of_birth'];
+        $user->bdate = strtotime($requestData['date_of_birth']);
         $user->number_phone = $requestData['number_phone'];
         $user->email = $requestData['email'];
         $user->password = Hash::make($requestData['password']);
@@ -105,9 +105,9 @@ class User extends Authenticatable
         return $user;
     }
 
-    public function getMobility()
+    public function mobility()
     {
-        return $this->hasOne(Mobility::class, 'user_id');
+        return $this->hasMany(Mobility::class, 'id_user');
     }
 
     protected static function newFactory()

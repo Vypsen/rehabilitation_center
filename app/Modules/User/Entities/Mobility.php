@@ -62,7 +62,7 @@ class Mobility extends Model
 
     protected $table = 'patient_mobility';
 
-    public function getUser()
+    public function user()
     {
         return $this->belongsTo(User::class);
     }
@@ -72,5 +72,13 @@ class Mobility extends Model
         return \App\Modules\User\Database\factories\MobilityFactory::new();
     }
 
+    public static function createCurrentCondition($id_user, $data)
+    {
+        $mobility = new self();
+        $mobility->id_user = $id_user;
+        $mobility->fill($data);
 
+        $mobility->save();
+        return true;
+    }
 }
