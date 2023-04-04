@@ -79,6 +79,6 @@ class Mobility extends Model
         $mobility->fill($data);
 
         $mobility->save();
-        return true;
+        return $mobility;
     }
 }

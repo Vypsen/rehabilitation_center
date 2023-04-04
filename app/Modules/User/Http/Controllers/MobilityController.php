@@ -7,6 +7,9 @@ use App\Http\Controllers\Controller;
 use App\Modules\User\Entities\Mobility;
 use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Validation\ValidationException;
+
 class MobilityController extends Controller
 {
     public function getMobility(Request $request)
@@ -17,29 +20,33 @@ class MobilityController extends Controller
 
     public function setMobility(Request $request)
     {
-        $data = $request->validate([
-            'lying_turn' => 'required',
-            'sits_down' => 'required',
-            'sits' => 'required',
-            'gets_up' => 'required',
-            'to_stand' => 'required',
-            'get_up_sits_down' => 'required',
-            'helps_walking_room' => 'required',
-            'walking_street' => 'required',
-            'stairwell' => 'required',
-            'walking_room' => 'required',
-            'raise_item' => 'required',
-            'walks_gravel' => 'required',
-            'washes' => 'required',
-            'ladder' => 'required',
-            'running' => 'required',
-        ]);
+        try {
+            $data = $request->validate([
+                'lying_turn' => 'required',
+                'sits_down' => 'required',
+                'sits' => 'required',
+                'gets_up' => 'required',
+                'to_stand' => 'required',
+                'get_up_sits_down' => 'required',
+                'helps_walking_room' => 'required',
+                'walking_street' => 'required',
+                'stairwell' => 'required',
+                'walking_room' => 'required',
+                'raise_item' => 'required',
+                'walks_gravel' => 'required',
+                'washes' => 'required',
+                'ladder' => 'required',
+                'running' => 'required',
+            ]);
+        } catch (ValidationException $exception) {
+            return new JsonResponse([
+                'errors' => $exception->errors(),
+            ], 422);
+        }
 
         $user = Auth::user();
         $mobility = Mobility::createCurrentCondition($user->id, $data);
-
-
-        return response()->json(['user' => Auth::user()->mobility()], 200);
+        return response()->json(['mobility' => $mobility], 200);
     }
 
 }
