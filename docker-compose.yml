@@ -1,61 +1,50 @@
 version: '3'
 services:
-
     backend:
-        # Для установки нужных пакетов используем не чистый образ, а инструкции из конкретного файла Dockerfile
         build:
             context: .
             dockerfile: ./docker/backend/Dockerfile
         container_name: backend
         restart: unless-stopped
-#        extra_hosts:
-#            - "host.docker.internal:host-gateway"
-        tty: true
-        working_dir: /var/www
+        extra_hosts:
+            - 'host.docker.internal:host-gateway'
+        working_dir: /var/www/center
         volumes:
-            - .:/var/www # Монтируем локальную папку в контейнер как /var/www
+            - '.:/var/www/center'
         depends_on:
             - database
-
-    # Nginx контейнер для вебсервера
     nginx:
         container_name: server
-        # Используем готовый образ для nginx контейнера
-        image: nginx:alpine
+        image: 'nginx:alpine'
         restart: unless-stopped
-        tty: true
         ports:
-            - "80:80" # Внутренний порт контейнера пробрасываем на host машину
+            - '80:80'
         volumes:
-            - .:/var/www # Монтируем локальную папку в контейнер как /var/www
-            - ./docker/nginx/conf.d/:/etc/nginx/conf.d/ # Передаем в контейнер конфигурационные файлы nginx
+            - '.:/var/www/center'
+            - './docker/nginx/conf.d/:/etc/nginx/conf.d/'
         depends_on:
             - backend
-
-#    node:
-#        container_name: frontend
-#        build:
-#            context: .
-#            dockerfile: ./docker/nodejs/Dockerfile
-#        tty: true
-#        ports:
-#            - "5173:5173"
-#        working_dir: /var/www
-#        volumes:
-#            - .:/var/www # Монтируем локальную папку в контейнер как /var/www
-
+    node:
+        container_name: frontend
+        build:
+            context: .
+            dockerfile: ./docker/nodejs/Dockerfile
+        ports:
+            - '5173:5173'
+        working_dir: /var/www/center
+        volumes:
+            - '.:/var/www/center'
     database:
         container_name: db
-        image: postgres:14.5
+        image: 'postgres:14.5'
         environment:
-            - POSTGRES_DB=${DB_DATABASE}
-            - POSTGRES_USER=${DB_USERNAME}
-            - POSTGRES_PASSWORD=${DB_PASSWORD}
+            - 'POSTGRES_DB=${DB_DATABASE}'
+            - 'POSTGRES_USER=${DB_USERNAME}'
+            - 'POSTGRES_PASSWORD=${DB_PASSWORD}'
         ports:
-            - "${DB_PORT}:5432"
+            - '${DB_PORT}:5432'
         volumes:
-            - postgresql:/var/lib/postgresql/data/
-
+            - 'postgresql:/var/lib/postgresql/data/'
 volumes:
     postgresql:
         driver: local

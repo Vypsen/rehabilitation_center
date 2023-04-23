@@ -6,12 +6,11 @@ import store from '../store'
 import Dashboard from "../components/Dashboard.vue";
 import AuthLayout from "../components/AuthLayout.vue";
 
-
-
 const routes = [
     {
         path: '/',
         redirect: '/dashboard',
+        title: 'page',
         component: Header,
         meta: {requiresAuth: true},
         children: [

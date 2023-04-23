@@ -1,10 +1,10 @@
 import {createStore} from 'vuex';
 import createPersistedState from 'vuex-persistedstate'
 
- const store = createStore({
+const store = createStore({
     state: {
-        user:{
-            data:{},
+        user: {
+            data: {},
             token: sessionStorage.getItem("TOKEN"),
         }
     },
@@ -22,57 +22,56 @@ import createPersistedState from 'vuex-persistedstate'
         }
     },
     actions: {
-        async register({commit}, user){
+        async register({commit}, user) {
             console.log(user)
-            try {
-                let req = await axios
-                    .post("http://localhost:80/api/auth/register",
-                        user
-                    )
-                commit("setUser", req.data);
-            }
-            catch(error){
-                console.log("error", error);
-            }
+
+            let req = await axios
+                .post("http://app.local/api/auth/register",
+                    user
+                )
+                .then(function (response) {
+                    console.log(response);
+                })
+            commit("setUser", req.data);
         },
-        async login({commit}, user){
+        async login({commit}, user) {
             console.log(user)
             try {
                 let req = await axios
                     .post("http://localhost:80/api/auth/login",
                         user
                     )
+                    .then(function (response) {
+                        console.log(response);
+                    })
                 commit("setUser", req.data);
-            }
-            catch(error){
+            } catch (error) {
                 console.log("error", error);
             }
         },
-        async logout({commit}){
+        async logout({commit}) {
             try {
                 let req = await axios.post("http://localhost:80/api/logout")
                 commit("logout");
                 return req;
-            }
-            catch(error){
+            } catch (error) {
                 console.log("error", error);
             }
         },
-        async getUser({commit}){
+        async getUser({commit}) {
             try {
                 let req = await axios.post("http://localhost:80/api/user")
                 commit("setUser", req.data);
                 return req;
-            }
-            catch(error){
+            } catch (error) {
                 console.log("error", error);
             }
         },
     },
     modules: {},
-     plugins: [
-         createPersistedState()
-     ]
+    plugins: [
+        createPersistedState()
+    ]
 });
 
 export default store;

@@ -3,13 +3,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Install Vue 3 in Laravel 9 with Vite</title>
+    <title>page1</title>
 
-{{--    @vite('resources/css/app.css')--}}
+    @vite('resources/css/app.css')
 </head>
 <body>
-<div id="app">hi</div>
-{{--@vite('resources/js/app.js')--}}
+<div id="app"></div>
+@vite('resources/js/app.js')
 
 </body>
 </html>

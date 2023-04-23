@@ -52,17 +52,17 @@ class AuthController extends Controller
         $data = $request->validated();
         $user = User::createFormRequest($data);
 
-        if ($user->id === 1){
+        if ($user->id === 1) {
             $user->role = RolesType::ADMIN;
             $authToken = $user->createToken('authToken', ['admin'])->plainTextToken;
-        }else{
+        } else {
             $user->role = RolesType::PATIENT;
             $authToken = $user->createToken('authToken', ['patient'])->plainTextToken;
         }
 
         return response()->json([
-                'authToken' => $authToken,
-        ]);
+            'authToken' => $authToken,
+        ], 201)->setStatusCode(201);
     }
 
     /**
@@ -82,7 +82,7 @@ class AuthController extends Controller
         $user = User::query()
             ->where('email', $data['email'])
             ->first();
-        if(!$user){
+        if (!$user) {
             return response()->json([
                 $data['email'] => 'user not found',
             ], 401);
@@ -92,11 +92,11 @@ class AuthController extends Controller
             $user = Auth::user();
             $user->save();
 
-            if ($user->role === RolesType::ADMIN){
+            if ($user->role === RolesType::ADMIN) {
                 $authToken = $user->createToken('authToken', ['admin'])->plainTextToken;
-            }else if($user->role === RolesType::DOCTOR){
+            } else if ($user->role === RolesType::DOCTOR) {
                 $authToken = $user->createToken('authToken', ['doctor'])->plainTextToken;
-            }else{
+            } else {
                 $authToken = $user->createToken('authToken', ['patient'])->plainTextToken;
             }
 
@@ -107,8 +107,8 @@ class AuthController extends Controller
         }
 
         return response()->json([
-            $data['email'] => 'invalid password',
-        ], 401);
+            $data['email'] => ['invalid password'],
+        ])->setStatusCode(401);
     }
 
     /**
