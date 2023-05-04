@@ -1,10 +1,10 @@
 version: '3'
 services:
-    backend:
+    app:
         build:
             context: .
             dockerfile: ./docker/backend/Dockerfile
-        container_name: backend
+        container_name: app
         restart: unless-stopped
         extra_hosts:
             - 'host.docker.internal:host-gateway'
@@ -23,17 +23,7 @@ services:
             - '.:/var/www/center'
             - './docker/nginx/conf.d/:/etc/nginx/conf.d/'
         depends_on:
-            - backend
-    node:
-        container_name: frontend
-        build:
-            context: .
-            dockerfile: ./docker/nodejs/Dockerfile
-        ports:
-            - '5173:5173'
-        working_dir: /var/www/center
-        volumes:
-            - '.:/var/www/center'
+            - app
     database:
         container_name: db
         image: 'postgres:14.5'

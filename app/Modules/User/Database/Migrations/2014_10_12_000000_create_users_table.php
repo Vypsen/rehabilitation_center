@@ -17,13 +17,15 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('lastname');
-            $table->string('patronymic');
+            $table->string('midname');
+            $table->boolean('gender');
+            $table->boolean('disease');
+            $table->boolean('brain_side');
             $table->string('number_phone');
             $table->integer('bdate');
             $table->string('email')->unique();
             $table->string('password');
             $table->timestamp('registration_at')->nullable();
-            $table->tinyInteger('role')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });

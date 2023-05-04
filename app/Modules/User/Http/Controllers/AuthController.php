@@ -17,7 +17,7 @@ use App\OpenApi\Responses\Auth\UserTokenResponse;
 use Auth;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
 use Vyuldashev\LaravelOpenApi\Attributes as OpenApi;
 
 #[OpenApi\PathItem]
@@ -62,6 +62,7 @@ class AuthController extends Controller
 
         return response()->json([
             'authToken' => $authToken,
+            'user' => $user
         ], 201)->setStatusCode(201);
     }
 

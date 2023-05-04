@@ -1,8 +1,5 @@
 <?php
 
+use App\Modules\User\Http\Controllers\Web\AuthController;
 use Illuminate\Support\Facades\Route;
-
-Route::get('{all}', function () {
-    return view('app');
-});
 

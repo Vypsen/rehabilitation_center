@@ -1,3 +1,7 @@
 {
-    "User": true
+    "User": true,
+    "Mobility": true,
+    "Page": true,
+    "Test": true,
+    "MainPage": true
 }

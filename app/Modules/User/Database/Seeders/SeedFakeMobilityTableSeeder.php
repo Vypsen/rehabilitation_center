@@ -2,11 +2,10 @@
 
 namespace App\Modules\User\Database\Seeders;
 
-use App\Modules\User\Entities\Mobility;
+use App\Modules\Mobility\Entities\Mobility;
 use App\Modules\User\Entities\User;
 use Faker\Generator;
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Eloquent\Model;
 
 class SeedFakeMobilityTableSeeder extends Seeder
 {
