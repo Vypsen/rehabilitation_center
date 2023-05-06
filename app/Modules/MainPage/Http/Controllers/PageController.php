@@ -8,6 +8,6 @@ class PageController extends Controller
 {
     public function pageView()
     {
-        return view('page.main');
+        return view('page.user');
     }
 }

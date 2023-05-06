@@ -42,11 +42,6 @@ class Mobility extends Model
         return $this->belongsTo(User::class);
     }
 
-    protected static function newFactory()
-    {
-        return \App\Modules\Mobility\Database\factories\MobilityFactory::new();
-    }
-
     public static function createCurrentCondition($id_user, $data)
     {
         $mobility = new self();
@@ -56,4 +51,6 @@ class Mobility extends Model
         $mobility->save();
         return $mobility;
     }
+
+
 }

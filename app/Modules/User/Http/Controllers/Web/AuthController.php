@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Modules\User\Entities\User;
 use Auth;
 use Illuminate\Http\Request;
+
 class AuthController extends Controller
 {
     public function registerView()
@@ -23,6 +24,11 @@ class AuthController extends Controller
         return view('home');
     }
 
+    public function userView()
+    {
+        return view(route('my'));
+    }
+
     public function register(Request $request)
     {
         $data = $request->validate([
@@ -35,7 +41,7 @@ class AuthController extends Controller
             'gender' => 'required',
             'disease' => 'required',
             'brain-side' => '',
-            'number_phone' =>'required',
+            'number_phone' => 'required',
         ]);
 
         $user = User::createFormRequest($data);
@@ -43,7 +49,7 @@ class AuthController extends Controller
         Auth::login($user);
         $request->session()->regenerate();
 
-        return redirect(route('page'));
+        return redirect(route('mobility'));
     }
 
     public function login(Request $request)
@@ -55,7 +61,7 @@ class AuthController extends Controller
 
         if (Auth::attempt($data, true)) {
             $request->session()->regenerate();
-            return redirect((route('page')));
+            return redirect((route('mobility')));
         }
 
         return back()->with(['email' => 'не найден']);
