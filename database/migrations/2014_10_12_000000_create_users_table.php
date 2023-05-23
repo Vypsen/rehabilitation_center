@@ -18,9 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('lastname');
             $table->string('midname');
-            $table->boolean('gender');
-            $table->boolean('disease');
-            $table->boolean('brain_side')->nullable();
+            $table->string('gender');
             $table->string('number_phone');
             $table->integer('bdate');
             $table->string('email')->unique();

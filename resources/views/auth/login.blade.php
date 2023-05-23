@@ -43,20 +43,20 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="row mb-3">
-                                <div class="">
-                                    <div class="col-md-12 ">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="remember"
-                                                   id="remember" {{ old('remember') ? 'checked' : '' }}>
+{{--                            <div class="row mb-3">--}}
+{{--                                <div class="">--}}
+{{--                                    <div class="col-md-12 ">--}}
+{{--                                        <div class="form-check">--}}
+{{--                                            <input class="form-check-input" type="checkbox" name="remember"--}}
+{{--                                                   id="remember" {{ old('remember') ? 'checked' : '' }}>--}}
 
-                                            <label class="form-check-label" for="remember">
-                                                Запомнить меня
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+{{--                                            <label class="form-check-label" for="remember">--}}
+{{--                                                Запомнить меня--}}
+{{--                                            </label>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
 
                             <div class="row">
                                 <div class="col-6 d-grid mx-auto">

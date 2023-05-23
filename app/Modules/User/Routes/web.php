@@ -15,7 +15,10 @@ Route::post('/logout', AuthController::class . '@logout')
     ->name('logout');
 
 
-Route::middleware('auth')->group(function () {
-    Route::get('/my', AuthController::class . '@userView')
+Route::middleware('auth:doctor')->group(function () {
+    Route::get('/my', \App\Modules\User\Http\Controllers\Web\UserController::class . '@viewMy')
         ->name('my');
+
+    Route::post('/my', \App\Modules\User\Http\Controllers\Web\UserController::class . '@setUser')
+        ->name('my.post');
 });

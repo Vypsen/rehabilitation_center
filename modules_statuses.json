@@ -1,5 +1,7 @@
 {
     "User": true,
     "MainPage": true,
-    "Mobility": true
+    "Mobility": true,
+    "Patient": true,
+    "UserAction": true
 }

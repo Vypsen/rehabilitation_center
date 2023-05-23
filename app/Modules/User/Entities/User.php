@@ -3,6 +3,7 @@
 namespace App\Modules\User\Entities;
 
 use App\Modules\Mobility\Entities\Mobility;
+use App\Modules\Patient\Entities\Patient;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -14,9 +15,7 @@ use Laravel\Sanctum\HasApiTokens;
  * @property string $name
  * @property string $lastname
  * @property string $midname
- * @property bool $gender
- * @property bool $disease
- * @property bool $brain_side
+ * @property string $gender
  * @property string $number_phone
  * @property int $bdate
  * @property string $email
@@ -38,7 +37,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'lastname',
-        'patronymic',
+        'midname',
         'number_phone',
         'date_of_birth',
         'email',
@@ -73,10 +72,6 @@ class User extends Authenticatable
         $user->lastname = $requestData['lastname'];
         $user->midname = $requestData['midname'];
         $user->gender = $requestData['gender'];
-        $user->disease = $requestData['disease'];
-        if ($user->disease === 0) {
-            $user->brain_side = $requestData['brain-side'];
-        }
         $user->bdate = strtotime($requestData['bdate']);
         $user->number_phone = $requestData['number_phone'];
         $user->email = $requestData['email'];
@@ -89,6 +84,16 @@ class User extends Authenticatable
     public function mobility()
     {
         return $this->hasMany(Mobility::class, 'id_user');
+    }
+
+    public function doctor()
+    {
+        return $this->hasOne(Doctor::class, 'id_user');
+    }
+
+    public function patient()
+    {
+        return $this->hasOne(Patient::class, 'id_user');
     }
 
     protected static function newFactory()

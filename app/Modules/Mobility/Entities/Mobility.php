@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property int $id
- * @property int $id_user
+ * @property int $id_patient
  * @property bool $lying_turn
  * @property bool $sits_down
  * @property bool $sits
@@ -33,7 +33,7 @@ class Mobility extends Model
 
     protected $guarded = [];
 
-    protected $casts = ['sdate' => 'datetime:Y.m.d'];
+    protected $casts = ['created_at' => 'datetime:Y-m-d'];
 
     protected $table = 'patient_mobility';
 
@@ -51,6 +51,4 @@ class Mobility extends Model
         $mobility->save();
         return $mobility;
     }
-
-
 }

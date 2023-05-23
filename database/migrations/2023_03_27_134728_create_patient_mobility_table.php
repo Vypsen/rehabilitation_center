@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('patient_mobility', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_user')->unsigned();
-            $table->foreign('id_user')
-                ->references('id')->on('users')
+            $table->integer('id_patient')->unsigned();
+            $table->foreign('id_patient')
+                ->references('id')->on('patients')
                 ->cascadeOnDelete();
 
             $table->boolean('lying_turn');

@@ -14,4 +14,10 @@
 Route::middleware('auth')->group(function () {
     Route::get('/mobility', \App\Modules\Mobility\Http\Controllers\Web\MobilityController::class . '@viewMobility')
         ->name('mobility');
+
+    Route::get('/mobility_all', \App\Modules\Mobility\Http\Controllers\Web\MobilityController::class . '@viewMobilityAll')
+        ->name('mobility_list');
+
+    Route::post('/new_mobility', \App\Modules\Mobility\Http\Controllers\Web\MobilityController::class . '@setMobility')
+        ->name('new_mobility');
 });
