@@ -52,14 +52,14 @@
                             <div class="ms-3 mb-3 gender">
                                 <label> Пол </label>
                                 <div class="form-check">
-                                    <input class="form-check-input" value="0" type="radio" name="gender"
+                                    <input class="form-check-input" value="Ж" type="radio" name="gender"
                                            id="woman">
                                     <label class="form-check-label">
                                         Женский
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" value="1" type="radio" name="gender"
+                                    <input class="form-check-input" value="М" type="radio" name="gender"
                                            id="man" checked>
                                     <label class="form-check-label">
                                         Мужской
@@ -182,4 +182,3 @@
         });
     </script>
 @endsection
-

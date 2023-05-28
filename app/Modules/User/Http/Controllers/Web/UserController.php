@@ -24,7 +24,6 @@ class UserController extends Controller
         $user->fill($data);
         $user->save();
 
-        return view('app.user', ['user' => $user]);
+        return redirect(route('patient_info'));
     }
-
 }

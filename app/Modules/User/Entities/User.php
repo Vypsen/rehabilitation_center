@@ -15,7 +15,9 @@ use Laravel\Sanctum\HasApiTokens;
  * @property string $name
  * @property string $lastname
  * @property string $midname
- * @property string $gender
+ * @property bool $gender
+ * @property bool $disease
+ * @property bool $brain_side
  * @property string $number_phone
  * @property int $bdate
  * @property string $email
@@ -43,8 +45,6 @@ class User extends Authenticatable
         'email',
         'password',
     ];
-
-    protected $guarded = ['role'];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -86,18 +86,19 @@ class User extends Authenticatable
         return $this->hasMany(Mobility::class, 'id_user');
     }
 
-    public function doctor()
-    {
-        return $this->hasOne(Doctor::class, 'id_user');
-    }
-
-    public function patient()
-    {
-        return $this->hasOne(Patient::class, 'id_user');
-    }
-
     protected static function newFactory()
     {
         return \App\Modules\User\Database\factories\UserFactory::new();
+    }
+
+    public function getFullName()
+    {
+        return "$this->lastname $this->name $this->midname";
+    }
+
+    public function getAge()
+    {
+        $age = floor((time() - $this->bdate) / 31556926);
+        return $age;
     }
 }

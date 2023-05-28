@@ -76,26 +76,22 @@ return [
         'patients' => [
             'driver' => 'eloquent',
             'model' => \App\Modules\Patient\Entities\Patient::class,
-            'table' => 'patients'
         ],
 
         'doctors' => [
             'driver' => 'eloquent',
             'model' => \App\Modules\User\Entities\Doctor::class,
-            'table' => 'doctors'
         ],
 
-         'users' => [
-             'driver' => 'eloquent',
-             'model' => \App\Modules\User\Entities\User::class,
-             'table' => 'users',
-         ],
+        'users' => [
+            'driver' => 'eloquent',
+            'model' => \App\Modules\User\Entities\User::class,
+        ],
 
         'admins' => [
-             'driver' => 'eloquent',
-             'model' => \App\Modules\User\Entities\Admin::class,
-             'table' => 'users',
-         ],
+            'driver' => 'eloquent',
+            'model' => \App\Modules\User\Entities\Admin::class,
+        ],
     ],
 
     /*

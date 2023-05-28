@@ -3,9 +3,11 @@
 namespace App\Modules\User\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Modules\Patient\Entities\Patient;
 use App\Modules\User\Entities\User;
 use App\Modules\User\Rules\ValidationPhoneRule;
 use Auth;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 
 class AuthController extends Controller
@@ -37,18 +39,19 @@ class AuthController extends Controller
             'lastname' => 'required',
             'midname' => 'required',
             'bdate' => 'required',
-            'email' => 'required|unique:users',
+            'email' => 'required|unique:patients',
             'password' => 'required',
             'gender' => 'required',
             'number_phone' => ['required', new ValidationPhoneRule],
         ]);
 
-        $user = User::createFormRequest($data);
+        $user = Patient::createFormRequest($data);
+
 
         Auth::guard('patient')->login($user);
         $request->session()->regenerate();
 
-        return redirect(route('mobility'));
+        return redirect(route('my'));
     }
 
     public function login(Request $request)
@@ -58,17 +61,11 @@ class AuthController extends Controller
             'password' => 'required',
         ]);
 
-        if (User::query()->where('email', $data['email'])->first()->doctor)
-        {
-            $guard = 'doctor';
-        } else if (User::query()->where('email', $data['email'])->first()->patient) {
-            $guard = 'patient';
-        }
+        $guard = 'patient';
 
-
-            if (Auth::guard($guard)->attempt($data, true)) {
+        if (Auth::guard($guard)->attempt($data, true)) {
             $request->session()->regenerate();
-            return redirect((route('mobility')));
+            return redirect((route('my')));
         }
 
         return back()->with(['email' => 'не найден']);
@@ -83,4 +80,6 @@ class AuthController extends Controller
 
         return redirect('/');
     }
+
+
 }

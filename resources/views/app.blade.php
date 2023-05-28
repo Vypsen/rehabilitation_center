@@ -9,9 +9,10 @@
     <title>Реабилитационный центр</title>
 
     <link rel="stylesheet" href="{{ mix('css/app.css') }}" type="text/css">
-    <script src="{{ mix('js/app.js') }}"></script>
-
+    <script src="{{ mix('/js/app.js') }}"></script>
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/d76290626c.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 {{--    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"--}}
 {{--            integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"--}}

@@ -1,17 +1,6 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth:patient'])->group(function () {
     Route::get('/mobility', \App\Modules\Patient\Http\Controllers\Web\MobilityController::class . '@viewMobility')
         ->name('mobility');
 
@@ -21,9 +10,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/new_mobility', \App\Modules\Patient\Http\Controllers\Web\MobilityController::class . '@setMobility')
         ->name('new_mobility');
 
-    Route::post('/patient', \App\Modules\Patient\Http\Controllers\Web\MobilityController::class . '@setPatientInfo')
+    Route::post('/patient', \App\Modules\Patient\Http\Controllers\Web\PatientController::class . '@setPatient')
         ->name('patient_info.post');
 
-    Route::get('/patient', \App\Modules\Patient\Http\Controllers\Web\MobilityController::class . '@viewPatientInfo')
+    Route::get('/patient', \App\Modules\Patient\Http\Controllers\Web\PatientController::class . '@viewPatient')
         ->name('patient_info');
 });

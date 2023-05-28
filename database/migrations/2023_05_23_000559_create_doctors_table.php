@@ -16,12 +16,19 @@ return new class extends Migration
         Schema::create('doctors', function (Blueprint $table) {
             $table->id();
 
-            $table->integer('id_user')->unsigned();
-            $table->foreign('id_user')
-                ->references('id')->on('users')
-                ->cascadeOnDelete();
-
+            $table->string('name');
+            $table->string('lastname');
+            $table->string('midname');
+            $table->string('gender');
             $table->string('post');
+            $table->string('number_phone');
+            $table->integer('bdate');
+            $table->string('email')->unique();
+            $table->string('password');
+
+            $table->rememberToken();
+            $table->timestamps();
+
         });
     }
 

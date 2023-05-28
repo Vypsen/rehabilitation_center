@@ -24,9 +24,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="">Просмотреть материал для восстановления</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{route('page')}}">Просмотреть материал для восстановления</a>
-                    </li>
                 </ul>
                 <div class="d-flex dropdown">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" role="button"
@@ -54,7 +51,7 @@
 
     </style>
 
-    <div style="margin: 180px 0;" class="container-fluid">
+    <div style="margin: 12vh 0;" class="container-fluid">
 
         @yield('app')
     </div>

@@ -2,50 +2,52 @@
 
 namespace App\Modules\Patient\Entities;
 
+use App\Http\Middleware\Authenticate;
 use App\Modules\User\Entities\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Hash;
 
 /**
  * @property int $id
- * @property int $id_user
- * @property int|null $visit_date
- * @property int|null $disease_date
- * @property string|null $address
- * @property string|null $relatives_info
- * @property int|null $height
- * @property int|null $weight
- * @property string|null $type_body
- * @property string $disease
- * @property string $extra_disease
- * @property string|null $allergy
- * @property int|null $glucose
- * @property int|null $blood_pressure
- * @property int|null $Ps
- * @property int|null $SpO
- * @property string|null $diabetes
- * @property string|null $visual/sensory_extinction
- * @property string|null $swallowing
- * @property string|null $talk
- * @property string|null $dysphasia
- * @property string|null $nerv_status
- * @property string|null $orientation
- * @property string|null $anxiety
- * @property bool|null $arterial_hypertension
- * @property bool|null $ischemia
- * @property bool|null $fibrillation
- * @property bool|null $stents
- * @property bool|null $cardiostimulator
- * @property bool|null $dyspnoea
- * @property string|null $pain
+ * @property string $name
+ * @property string $lastname
+ * @property string $midname
+ * @property string $gender
+ * @property string $number_phone
+ * @property int $bdate
+ * @property string $email
+ * @property string $password
+ * @property \Illuminate\Support\Carbon|null $registration_at
+ * @property string|null $remember_token
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  */
-class Patient extends Model
+class Patient extends User
 {
     protected $table = 'patients';
 
-    public function user()
+
+    public static function createFormRequest(array $requestData): self
     {
-        return $this->belongsTo(User::class);
+        $user = new self();
+        $user->name = $requestData['name'];
+        $user->lastname = $requestData['lastname'];
+        $user->midname = $requestData['midname'];
+        $user->gender = $requestData['gender'];
+        $user->bdate = strtotime($requestData['bdate']);
+        $user->number_phone = $requestData['number_phone'];
+        $user->email = $requestData['email'];
+        $user->password = Hash::make($requestData['password']);
+
+        $user->save();
+        return $user;
     }
+
+    public function generalInfo()
+    {
+        return $this->hasOne(GeneralInfoPatient::class, 'patient_id');
+    }
+
+
 }

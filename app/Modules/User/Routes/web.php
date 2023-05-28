@@ -15,7 +15,7 @@ Route::post('/logout', AuthController::class . '@logout')
     ->name('logout');
 
 
-Route::middleware('auth:doctor')->group(function () {
+Route::middleware(['auth:doctor,patient,admin'])->group(function () {
     Route::get('/my', \App\Modules\User\Http\Controllers\Web\UserController::class . '@viewMy')
         ->name('my');
 

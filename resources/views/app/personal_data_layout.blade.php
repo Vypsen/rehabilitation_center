@@ -1,43 +1,40 @@
 @extends('app.header')
 
 @section('app')
-    <div class="d-flex justify-content-center">
-        <div class="col-lg-8 card p-2">
-            <div class="d-flex justify-content-center menu mb-4">
-                <a class="d-inline-block px-5 m-2 btn btn user " href="/my">Пользователь</a>
-                <a class="d-inline-block px-5 m-2 btn btn" href="/">Общие мед. данные</a>
-                <a class="d-inline-block px-5 m-2 btn btn" href="">Спец мед. данные</a>
-                <a class="d-inline-block px-5 m-2 btn btn" href="">Навыки пациента</a>
+    <div class="row d-flex justify-content-center">
+        <div class="col-xxl-2 col-md-3 menu-user">
+            <div class="card position-fixed">
+                <div class="card-body">
+                    <nav class="nav flex-column" style="font-size: 15px;">
+                        <a class="nav-link my" href="/my"><i class="fa-solid fa-user me-2"></i>Общая
+                            информация</a>
+                        <a class="nav-link active patient" href="/patient"><i class="fa-sharp fa-solid fa-hospital-user me-2"></i>Первичный
+                            осмотр</a>
+                        <a class="nav-link" href="#"><i class="fa-sharp fa-solid fa-person-cane me-2"></i>Спец.
+                            данные</a>
+                        <a class="nav-link" href="#"><i class="fa-solid fa-person-running me-2"></i>Навыки пациента</a>
+                    </nav>
+                </div>
             </div>
-            <div class="col-lg-7 m-auto">
-                @yield('info')
+        </div>
+        <div class="col-md-6 col-xxl-5">
+            <div class="card">
+                <div class="card-body">
+                    @yield('info')
+                </div>
             </div>
         </div>
     </div>
     <style>
-        .menu a {
-            background-color: #F5F8F5;
-        }
-
-        .card {
-            border: 0;
-            -webkit-box-shadow: 0px 0px 32px 5px rgba(34, 60, 80, 0.2);
-            -moz-box-shadow: 0px 0px 32px 5px rgba(34, 60, 80, 0.2);
-            box-shadow: 0px 0px 32px 5px rgba(34, 60, 80, 0.2);
-        }
-
-        .d-inline-block {
-            border: 2px solid rgba(0, 0, 0, 0.225);
-        }
-
-        .d-inline-block:hover {
+        .menu-user a {
             color: #199c68;
-            -webkit-box-shadow: 0px 0px 7px 3px rgba(34, 60, 80, 0.2);
-            -moz-box-shadow: 0px 0px 7px 3px rgba(34, 60, 80, 0.2);
-            box-shadow: 0px 0px 7px 3px rgba(34, 60, 80, 0.2);
         }
-
     </style>
     <script>
+        $(document).ready(function () {
+            let path = window.location.pathname;
+            path = path.replace('/', '.');
+            $(".menu-user " + path).css('color', '#0a58ca');
+        })
     </script>
 @endsection
