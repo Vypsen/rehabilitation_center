@@ -16,44 +16,39 @@ return new class extends Migration
         Schema::create('patients_tracked_data', function (Blueprint $table) {
             $table->id();
 
-            $table->integer('id_patient')->unsigned();
-            $table->foreign('id_patient')
+            $table->integer('patient_id')->unsigned();
+            $table->foreign('patient_id')
                 ->references('id')->on('patients')
                 ->cascadeOnDelete();
 
-            $table->integer('l_hand')->unsigned();
-            $table->foreign('l_hand')
-                ->references('id')->on('patients_sensitivity')
+            $table->boolean('hand_tactility')->nullable()->default(0);
+            $table->boolean('hand_t')->nullable()->default(0);
+            $table->boolean('hand_pain')->nullable()->default(0);
+            $table->boolean('hand_musculoskeletal_feeling')->nullable()->default(0);
+
+            $table->boolean('leg_tactility')->nullable()->default(0);
+            $table->boolean('leg_t')->nullable()->default(0);
+            $table->boolean('leg_pain')->nullable()->default(0);
+            $table->boolean('leg_musculoskeletal_feeling')->nullable()->default(0);
+
+            $table->string('type_disorder')->nullable();
+            $table->string('memory_loss')->nullable();
+            $table->string('orientation')->nullable();
+            $table->string('edema')->nullable();
+
+            $table->boolean('shortness')->nullable()->default(0);
+            $table->boolean('cough')->nullable()->default(0);
+            $table->boolean('asthma')->nullable()->default(0);
+            $table->boolean('smoking')->nullable()->default(0);
+
+            $table->integer('sleep_count')->nullable();
+            $table->boolean('insomnia')->nullable()->default(0);
+            $table->boolean('sedatives')->nullable()->default(0);
+
+            $table->integer('SRM');
+            $table->foreign('SRM')
+                ->references('point')->on('SRM_descr')
                 ->cascadeOnDelete();
-
-            $table->integer('r_hand')->unsigned();
-            $table->foreign('r_hand')
-                ->references('id')->on('patients_sensitivity')
-                ->cascadeOnDelete();
-
-            $table->integer('l_leg')->unsigned();
-            $table->foreign('l_leg')
-                ->references('id')->on('patients_sensitivity')
-                ->cascadeOnDelete();
-
-            $table->integer('r_leg')->unsigned();
-            $table->foreign('r_leg')
-                ->references('id')->on('patients_sensitivity')
-                ->cascadeOnDelete();
-
-            $table->string('memory_loss');
-            $table->string('disorders');
-            $table->string('orientation');
-            $table->string('edema');
-
-            $table->boolean('shortness');
-            $table->boolean('cough');
-            $table->boolean('asthma');
-            $table->boolean('smoking');
-
-            $table->string('sleep_hours');
-            $table->boolean('insomnia');
-            $table->boolean('sedatives');
 
             $table->timestamps();
         });

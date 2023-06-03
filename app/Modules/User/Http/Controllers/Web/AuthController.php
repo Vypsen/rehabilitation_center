@@ -7,6 +7,7 @@ use App\Modules\Patient\Entities\Patient;
 use App\Modules\User\Entities\User;
 use App\Modules\User\Rules\ValidationPhoneRule;
 use Auth;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 
@@ -45,12 +46,14 @@ class AuthController extends Controller
             'number_phone' => ['required', new ValidationPhoneRule],
         ]);
 
+
         $user = Patient::createFormRequest($data);
 
-
+        event(new Registered($user));
         Auth::guard('patient')->login($user);
         $request->session()->regenerate();
 
+//        return redirect(route('my'));
         return redirect(route('my'));
     }
 

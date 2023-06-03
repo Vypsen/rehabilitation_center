@@ -66,45 +66,11 @@
                                     </label>
                                 </div>
                             </div>
-{{--                            <div class="ms-3 mb-3 disease">--}}
-{{--                                <label> Диагноз </label>--}}
-{{--                                <div class="form-check">--}}
-{{--                                    <input class="form-check-input" value="0" type="radio" name="disease"--}}
-{{--                                           id="insult">--}}
-{{--                                    <label class="form-check-label">--}}
-{{--                                        Инсульт--}}
-{{--                                    </label>--}}
-{{--                                </div>--}}
-{{--                                <div class="form-check">--}}
-{{--                                    <input class="form-check-input" checked value="1" type="radio" name="disease"--}}
-{{--                                           id="other">--}}
-{{--                                    <label class="form-check-label">--}}
-{{--                                        Другое--}}
-{{--                                    </label>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                            <div class="d-none ms-3 mb-3 brain-side">--}}
-{{--                                <label> Полушарие </label>--}}
-{{--                                <div class="form-check">--}}
-{{--                                    <input class="form-check-input" value="0" type="radio" name="brain_side"--}}
-{{--                                           id="left">--}}
-{{--                                    <label class="form-check-label">--}}
-{{--                                        Левое--}}
-{{--                                    </label>--}}
-{{--                                </div>--}}
-{{--                                <div class="form-check">--}}
-{{--                                    <input class="form-check-input" checked value="1" type="radio" name="brain_side"--}}
-{{--                                           id="right">--}}
-{{--                                    <label class="form-check-label">--}}
-{{--                                        Правое--}}
-{{--                                    </label>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
                             <div class="row mb-3">
                                 <div class="col-md-12">
                                     <input id="number_phone" placeholder="Телефон" type="tel"
                                            class="form-control @error('number_phone') is-invalid @enderror" name="number_phone"
-                                           required>
+                                           required><small>Формат: +79ХХХХХХХХХ</small>
 
                                     @error('number_phone')
                                     <span class="invalid-feedback" role="alert">

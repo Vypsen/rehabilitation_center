@@ -41,29 +41,27 @@ return new class extends Migration
             $table->string('swallowing')->nullable();
             $table->string('talk')->nullable();
             $table->string('dysphasia')->nullable();
-            $table->string('type_disorder')->nullable();
             $table->string('nerv_status')->nullable();
-            $table->string('orientation')->nullable();
             $table->string('anxiety')->nullable();
             $table->string('cardio_system')->nullable();
-            $table->boolean('stents')->nullable();
-            $table->boolean('cardiostimulator')->nullable();
+            $table->boolean('stents')->nullable()->default(0);
+            $table->boolean('cardiostimulator')->nullable()->default(0);
             $table->string('pain_place')->nullable();
             $table->string('pain_periodicity')->nullable();
-            $table->boolean('skin_damage')->nullable();
+            $table->boolean('skin_damage')->nullable()->default(0);
             $table->string('skin_damage_place')->nullable();
 
-            $table->boolean('urine_incontinence')->nullable();
-            $table->boolean('frequent_urination')->nullable();
+            $table->boolean('urine_incontinence')->nullable()->default(0);
+            $table->boolean('frequent_urination')->nullable()->default(0);
             $table->unsignedInteger('nikturia_count')->nullable();
-            $table->boolean('urinary_catheter')->nullable();
-            $table->boolean('rep_urinary_infection')->nullable();
+            $table->boolean('urinary_catheter')->nullable()->default(0);
+            $table->boolean('rep_urinary_infection')->nullable()->default(0);
             $table->string('urine_features')->nullable();
 
-            $table->boolean('excrement_incontinence')->nullable();
+            $table->boolean('excrement_incontinence')->nullable()->default(0);
             $table->unsignedInteger('defecation_count')->nullable();
 
-            $table->boolean('laxative')->nullable();
+            $table->boolean('laxative')->nullable()->default(0);
             $table->unsignedInteger('laxative_count')->nullable();
             $table->string('laxative_name')->nullable();
             $table->timestamps();

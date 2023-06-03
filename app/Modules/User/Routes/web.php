@@ -1,6 +1,7 @@
 <?php
 
 use App\Modules\User\Http\Controllers\Web\AuthController;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 Route::prefix('auth')->group(function () {
     Route::get('/register', AuthController::class . "@registerView");
@@ -17,8 +18,18 @@ Route::post('/logout', AuthController::class . '@logout')
 
 Route::middleware(['auth:doctor,patient,admin'])->group(function () {
     Route::get('/my', \App\Modules\User\Http\Controllers\Web\UserController::class . '@viewMy')
-        ->name('my');
+        ->name('my')->middleware('verified');
 
     Route::post('/my', \App\Modules\User\Http\Controllers\Web\UserController::class . '@setUser')
-        ->name('my.post');
+        ->name('my.post')->middleware('verified');
+
+    Route::get('/email/verify', function () {
+        return view('auth.verify-email');
+    })->name('verification.notice');
+
+    Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+        $request->fulfill();
+
+        return redirect('/my');
+    })->middleware('signed')->name('verification.verify');
 });

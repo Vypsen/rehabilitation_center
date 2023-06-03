@@ -4,6 +4,7 @@ namespace App\Modules\User\Entities;
 
 use App\Modules\Mobility\Entities\Mobility;
 use App\Modules\Patient\Entities\Patient;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -27,7 +28,7 @@ use Laravel\Sanctum\HasApiTokens;
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  */
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -43,7 +44,7 @@ class User extends Authenticatable
         'number_phone',
         'date_of_birth',
         'email',
-        'password',
+        'gender',
     ];
 
     /**
@@ -79,11 +80,6 @@ class User extends Authenticatable
 
         $user->save();
         return $user;
-    }
-
-    public function mobility()
-    {
-        return $this->hasMany(Mobility::class, 'id_user');
     }
 
     protected static function newFactory()

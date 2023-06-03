@@ -3,6 +3,7 @@
 namespace App\Modules\User\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Modules\User\Rules\ValidationPhoneRule;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -18,12 +19,16 @@ class UserController extends Controller
     {
         $user = Auth::user();
 
+        $request->validate([
+            'number_phone' => ['required', new ValidationPhoneRule],
+        ]);
+
         $data = $request->all();
         $user->bdate = strtotime($data['bdate']);
 
         $user->fill($data);
         $user->save();
 
-        return redirect(route('patient_info'));
+        return redirect(route('patient'));
     }
 }

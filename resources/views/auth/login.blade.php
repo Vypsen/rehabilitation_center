@@ -17,7 +17,7 @@
                                 <div class="col-md-12">
                                     <input id="email" type="email"
                                            class="form-control @error('email') is-invalid @enderror" name="email"
-                                           value="{{ old('email') }}" required autocomplete="email" autofocus
+                                           required autocomplete="email" autofocus
                                            placeholder="E-mail">
 
                                     @error('email')

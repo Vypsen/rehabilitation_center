@@ -12,12 +12,7 @@
                     <li class="nav-item">
                         <div class="d-flex dropdown">
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('mobility') }}">
-                                    Первичный осмотр
-                                </a>
-                                <a class="dropdown-item" href="{{ route('mobility_list') }}">
-                                    Просмотреть все изменение возможностей
-                                </a>
+
                             </div>
                         </div>
                     </li>
@@ -52,7 +47,6 @@
     </style>
 
     <div style="margin: 12vh 0;" class="container-fluid">
-
         @yield('app')
     </div>
 @endsection

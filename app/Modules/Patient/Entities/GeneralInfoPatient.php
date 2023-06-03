@@ -17,19 +17,18 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $disease
  * @property string|null $extra_disease
  * @property string|null $allergy
- * @property int|null $glucose
- * @property int|null $blood_pressure
- * @property int|null $Ps
- * @property int|null $SpO
+ * @property string|null $glucose
+ * @property string|null $blood_pressure
+ * @property string|null $Ps
+ * @property string|null $SpO
  * @property string|null $diabetes
- * @property string|null $visual/sensory_extinction
+ * @property string|null $visual_or_sensory_extinction
  * @property string|null $swallowing
  * @property string|null $talk
  * @property string|null $dysphasia
  * @property string|null $nerv_status
- * @property string|null $orientation
  * @property string|null $anxiety
- * @property bool|null $cardio_system
+ * @property string|null $cardio_system
  * @property bool|null $stents
  * @property bool|null $cardiostimulator
  * @property string|null $pain_place
@@ -46,7 +45,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int|null $defecation_count
  * @property bool|null $laxative
  * @property int|null $laxative_count
- * @property int|null $laxative_name
+ * @property string|null $laxative_name
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  */
@@ -55,4 +54,5 @@ class GeneralInfoPatient extends Model
     protected $table = 'general_info_patients';
 
     protected $guarded = [];
+
 }

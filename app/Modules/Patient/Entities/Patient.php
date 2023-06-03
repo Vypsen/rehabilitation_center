@@ -4,8 +4,10 @@ namespace App\Modules\Patient\Entities;
 
 use App\Http\Middleware\Authenticate;
 use App\Modules\User\Entities\User;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
 
 /**
@@ -25,8 +27,9 @@ use Illuminate\Support\Facades\Hash;
  */
 class Patient extends User
 {
-    protected $table = 'patients';
+    use Notifiable;
 
+    protected $table = 'patients';
 
     public static function createFormRequest(array $requestData): self
     {
@@ -49,5 +52,23 @@ class Patient extends User
         return $this->hasOne(GeneralInfoPatient::class, 'patient_id');
     }
 
+    public function trackedInfo()
+    {
+        return $this->hasMany(TrackedInfoPatient::class, 'patient_id');
+    }
 
+    public function lastTrackedInfo()
+    {
+        return $this->trackedInfo()->latest()->first();
+    }
+
+    public function skills()
+    {
+        return $this->hasMany(Skills::class);
+    }
+
+    public function lastSkills()
+    {
+        return $this->skills()->latest()->first();
+    }
 }

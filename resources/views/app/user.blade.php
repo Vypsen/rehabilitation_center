@@ -3,8 +3,8 @@
 @section('info')
     <div class="container-fluid">
         <div class="mb-4">
-            <h4>{{$user->getFullName()}}, {{$user->getAge()}}, {{$user->gender}} </h4>
-        <hr>
+            <h4>{{$user->getFullName()}}, {{$user->getAge()}}, <?= $user->gender == 'М' ? "<b style='color:blue'>М</b>" : "<b style='color:pink'>Ж</b>"?> </h4>
+            <hr>
         </div>
         <form method="POST" action="{{route('my.post')}}">
             @csrf
@@ -29,10 +29,44 @@
                     </div>
                 </div>
                 <div class="row mb-3">
-                    <label for="bdate" class="col-sm-3 col-xxl-2 col-form-label">Дата рождения</label>
+                    <label for="gender" class="col-sm-2 col-xxl-2 col-form-label">Пол</label>
+                    <div class="col-sm-10 col-xxl-6 mt-1">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" {{$user->gender == "Ж" ? 'checked' : ''}} value="Ж" type="radio" name="gender"
+                                   id="woman">
+                            <label class="form-check-label">
+                                Женский
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" {{$user->gender == "М" ? 'checked' : ''}} value="М" type="radio" name="gender"
+                                   id="man">
+                            <label class="form-check-label">
+                                Мужской
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="bdate" class="col-sm-3 col-xxl-3 col-form-label">Дата рождения</label>
                     <div class="col-sm-4 col-xxl-4">
                         <input type="date" name="bdate" class="form-control" value="{{date('Y-m-d', $user->bdate)}}"
                                id="bdate">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="number_phone" class="col-sm-3 col-xxl-3 col-form-label">Номер телефона</label>
+                    <div class="col-sm-4 col-xxl-4">
+                        <input id="number_phone" type="tel"
+                               class="form-control @error('number_phone') is-invalid @enderror" name="number_phone"
+                               value="{{$user->number_phone}}"
+                               required><small>Формат: +79ХХХХХХХХХ</small>
+
+                        @error('number_phone')
+                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                        @enderror
                     </div>
                 </div>
             </div>
