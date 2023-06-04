@@ -94,7 +94,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function getAge()
     {
-        $age = floor((time() - $this->bdate) / 31556926);
+        $age = floor((time() - strtotime($this->bdate)) / 31556926);
         return $age;
     }
 }

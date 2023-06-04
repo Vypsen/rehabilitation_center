@@ -15,6 +15,8 @@ class SkillsController extends Controller
         $skillsName = DB::table('skills_name')->get();
 
         $usersSkills = Auth::user()->lastSkills();
+        if (!$usersSkills) $usersSkills = new Skills();
+
         return view('app.skills', ['skills' => $skillsName, 'usersSkills' => $usersSkills]);
     }
 

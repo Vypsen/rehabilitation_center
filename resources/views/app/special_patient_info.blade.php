@@ -134,10 +134,13 @@
                 </div>
                 <div class="row mt-3">
                     <label for="" class="col-form-label"><b>Сон</b></label>
-                    <div class="col-3">
+                    <div class="col-2">
                         <label class="" for="sleep_count">Кол-во часов сна</label>
-                        <input class="form-control" type="text" id="sleep_count" name="sleep_count"
-                               value="{{$patient->sleep_count}}">
+                        <select  class="form-select" aria-label="Hour"  id="sleep_count" name="sleep_count">
+                            <?php for ($i = 1; $i <= 24; $i++): ?>
+                            <option {{$patient->sleep_count == $i ? 'selected' : ''}} value="<?= $i ?>"><?= $i ?></option>
+                            <?php endfor; ?>
+                        </select>
                     </div>
                     <div class="col-7 my-auto">
                         <div class="form-check form-check-inline">

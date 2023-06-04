@@ -50,7 +50,7 @@
                 <div class="row mb-3">
                     <label for="bdate" class="col-sm-3 col-xxl-3 col-form-label">Дата рождения</label>
                     <div class="col-sm-4 col-xxl-4">
-                        <input type="date" name="bdate" class="form-control" value="{{date('Y-m-d', $user->bdate)}}"
+                        <input type="date" name="bdate" class="form-control" value="{{$user->bdate}}"
                                id="bdate">
                     </div>
                 </div>

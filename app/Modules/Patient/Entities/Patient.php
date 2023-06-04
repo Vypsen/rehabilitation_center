@@ -3,6 +3,7 @@
 namespace App\Modules\Patient\Entities;
 
 use App\Http\Middleware\Authenticate;
+use App\Modules\Patient\Database\factories\PatientFactory;
 use App\Modules\User\Entities\User;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Model;
@@ -31,6 +32,11 @@ class Patient extends User
 
     protected $table = 'patients';
 
+    protected static function newFactory()
+    {
+        return PatientFactory::new();
+    }
+
     public static function createFormRequest(array $requestData): self
     {
         $user = new self();
@@ -38,7 +44,7 @@ class Patient extends User
         $user->lastname = $requestData['lastname'];
         $user->midname = $requestData['midname'];
         $user->gender = $requestData['gender'];
-        $user->bdate = strtotime($requestData['bdate']);
+        $user->bdate = $requestData['bdate'];
         $user->number_phone = $requestData['number_phone'];
         $user->email = $requestData['email'];
         $user->password = Hash::make($requestData['password']);
@@ -70,5 +76,10 @@ class Patient extends User
     public function lastSkills()
     {
         return $this->skills()->latest()->first();
+    }
+
+    public static function getAllPatients()
+    {
+        return self::all();
     }
 }

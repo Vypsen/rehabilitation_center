@@ -35,7 +35,6 @@ class TrackedInfoPatient extends Model
     protected $table = 'patients_tracked_data';
     protected $guarded = [];
 
-
     public function patient()
     {
         return $this->belongsTo(Patient::class);

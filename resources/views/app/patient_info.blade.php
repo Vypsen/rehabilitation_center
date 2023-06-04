@@ -10,14 +10,14 @@
                         <label for="visit_date"> Дата осмотра </label>
                         <input id="visit_date" type="date"
                                class="form-control" name="visit_date"
-                               value="{{date('Y-m-d', $patient->visit_date)}}"
+                               value="{{date('Y-m-d', strtotime($patient->visit_date))}}"
                         >
                     </div>
                     <div class="col-xxl-3 col-md-4">
                         <label for="disease_date"> Дата заболевания </label>
                         <input id="disease_date" type="date"
                                class="form-control" name="disease_date"
-                               value="{{date('Y-m-d', $patient->disease_date)}}"
+                               value="{{date('Y-m-d', strtotime($patient->disease_date))}}"
                         >
                     </div>
                     <div class="col">
@@ -134,7 +134,7 @@
                         <label for="dysphasia" class="col-form-label">Дисфазия</label>
                         <div class="">
                             <select name="dysphasia" class="form-select">
-                                <option {{$patient->dysphasia == 'Отсутствует' ? 'selected' : ''}}>Отсут ствует</option>
+                                <option {{$patient->dysphasia == 'Отсутствует' ? 'selected' : ''}}>Отсутствует</option>
                                 <option {{$patient->dysphasia == 'Сенсорная' ? 'selected' : ''}} >Сенсорная</option>
                                 <option {{$patient->dysphasia == 'Моторная' ? 'selected' : ''}}>Моторная</option>
                                 <option {{$patient->dysphasia == 'Дизартрия' ? 'selected' : ''}}>Дизартрия</option>

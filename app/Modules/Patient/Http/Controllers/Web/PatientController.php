@@ -34,8 +34,6 @@ class PatientController extends Controller
             $pInfo->fill($data);
         }
 
-        $pInfo->visit_date = strtotime($pInfo->visit_date);
-        $pInfo->disease_date = strtotime($pInfo->disease_date);
         $pInfo->save();
 
         return redirect(route('patient'));

@@ -21,8 +21,8 @@ return new class extends Migration
                 ->references('id')->on('patients')
                 ->cascadeOnDelete();
 
-            $table->integer('visit_date')->nullable();
-            $table->integer('disease_date')->nullable();
+            $table->dateTimeTz('visit_date')->nullable();
+            $table->dateTimeTz('disease_date')->nullable();
             $table->string('address')->nullable();
             $table->string('relatives_info')->nullable();
             $table->integer('height')->nullable();
@@ -37,10 +37,10 @@ return new class extends Migration
             $table->string('Ps')->nullable();
             $table->string('SpO')->nullable();
             $table->string('diabetes')->nullable();
+            $table->string('dysphasia')->nullable();
             $table->string('visual_or_sensory_extinction')->nullable();
             $table->string('swallowing')->nullable();
             $table->string('talk')->nullable();
-            $table->string('dysphasia')->nullable();
             $table->string('nerv_status')->nullable();
             $table->string('anxiety')->nullable();
             $table->string('cardio_system')->nullable();
