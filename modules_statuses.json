@@ -3,5 +3,8 @@
     "MainPage": true,
     "Mobility": true,
     "Patient": true,
-    "UserAction": true
+    "UserAction": true,
+    "Admin": true,
+    "Doctor": true,
+    "Recover": true
 }

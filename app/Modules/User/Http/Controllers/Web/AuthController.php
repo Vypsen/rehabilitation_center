@@ -3,10 +3,12 @@
 namespace App\Modules\User\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Modules\Doctor\Entities\Doctor;
 use App\Modules\Patient\Entities\Patient;
 use App\Modules\User\Entities\User;
 use App\Modules\User\Rules\ValidationPhoneRule;
 use Auth;
+use Cookie;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
@@ -53,7 +55,6 @@ class AuthController extends Controller
         Auth::guard('patient')->login($user);
         $request->session()->regenerate();
 
-//        return redirect(route('my'));
         return redirect(route('my'));
     }
 
@@ -64,7 +65,12 @@ class AuthController extends Controller
             'password' => 'required',
         ]);
 
-        $guard = 'patient';
+        if (Patient::query()->where('email', $data['email'])->whereNotNull('email_verified_at')->first()) {
+            $guard = 'patient';
+        } else if (Doctor::query()->where('email', $data['email'])->whereNotNull('email_verified_at')->first()) {
+            $guard = 'doctor';
+        } else $guard = 'admin';
+
 
         if (Auth::guard($guard)->attempt($data, true)) {
             $request->session()->regenerate();
@@ -76,13 +82,10 @@ class AuthController extends Controller
 
     public function logout(Request $request)
     {
-        Auth::logout();
-
+        Auth::guard()->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
         return redirect('/');
     }
-
-
 }

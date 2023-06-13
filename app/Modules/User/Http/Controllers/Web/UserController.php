@@ -12,7 +12,14 @@ class UserController extends Controller
     public function viewMy()
     {
         $user = Auth::user();
+
         return view('app.user', ['user' => $user]);
+
+//        $guard = Auth::getDefaultDriver();
+//        if ($guard == 'patient') {
+//            return view('app.patient.user', ['user' => $user]);
+//        } elseif ($guard == 'admin') return view('app.admin.admin', ['user' => $user]);
+//        else return view('app.doctor.doctor', ['user' => $user]);
     }
 
     public function setUser(Request $request)
@@ -23,12 +30,12 @@ class UserController extends Controller
             'number_phone' => ['required', new ValidationPhoneRule],
         ]);
 
+
         $data = $request->all();
-        $user->bdate = strtotime($data['bdate']);
 
         $user->fill($data);
         $user->save();
 
-        return redirect(route('patient'));
+        return redirect('/');
     }
 }

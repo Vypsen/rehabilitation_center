@@ -1,10 +1,8 @@
 <?php
 
-namespace App\Modules\User\Entities;
+namespace App\Modules\Admin\Entities;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Modules\User\Entities\User;
 
 /**
  * @property int $id
@@ -12,20 +10,16 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @property string $lastname
  * @property string $midname
  * @property string $gender
- * @property string $post
  * @property string $number_phone
- * @property int $bdate
+ * @property mixed $bdate
  * @property string $email
+ * @property string|null $email_verified_at
  * @property string $password
  * @property string|null $remember_token
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  */
-class Doctor extends Authenticatable
+class Admin extends User
 {
-
-    protected $table = 'doctors';
-
-
-
+    protected $table = 'admins';
 }

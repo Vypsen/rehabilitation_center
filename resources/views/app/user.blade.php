@@ -3,7 +3,8 @@
 @section('info')
     <div class="container-fluid">
         <div class="mb-4">
-            <h4>{{$user->getFullName()}}, {{$user->getAge()}}, <?= $user->gender == 'М' ? "<b style='color:blue'>М</b>" : "<b style='color:pink'>Ж</b>"?> </h4>
+            <h4>{{$user->getFullName()}}
+                , {{$user->getAge()}} <?= $user->gender == 'М' ? "<b style='color:blue'>М</b>" : "<b style='color:pink'>Ж</b>" ?> </h4>
             <hr>
         </div>
         <form method="POST" action="{{route('my.post')}}">
@@ -32,14 +33,16 @@
                     <label for="gender" class="col-sm-2 col-xxl-2 col-form-label">Пол</label>
                     <div class="col-sm-10 col-xxl-6 mt-1">
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" {{$user->gender == "Ж" ? 'checked' : ''}} value="Ж" type="radio" name="gender"
+                            <input class="form-check-input" {{$user->gender == "Ж" ? 'checked' : ''}} value="Ж"
+                                   type="radio" name="gender"
                                    id="woman">
                             <label class="form-check-label">
                                 Женский
                             </label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" {{$user->gender == "М" ? 'checked' : ''}} value="М" type="radio" name="gender"
+                            <input class="form-check-input" {{$user->gender == "М" ? 'checked' : ''}} value="М"
+                                   type="radio" name="gender"
                                    id="man">
                             <label class="form-check-label">
                                 Мужской

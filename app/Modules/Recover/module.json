@@ -1,0 +1,11 @@
+{
+    "name": "Recover",
+    "alias": "recover",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "App\\Modules\\Recover\\Providers\\RecoverServiceProvider"
+    ],
+    "files": []
+}

@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Modules\Admin\Database\Seeders\SeedFakeAdminsTableSeeder;
+use App\Modules\Doctor\Database\Seeders\DoctorDatabaseSeeder;
 use App\Modules\Patient\Database\Seeders\SeedFakePatientGeneralInfoTableSeeder;
 use App\Modules\Patient\Database\Seeders\SeedFakePatientSkillsTableSeeder;
 use App\Modules\Patient\Database\Seeders\SeedFakePatientsTableSeeder;
@@ -18,10 +20,12 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-//            SeedFakePatientsTableSeeder::class,
-//            SeedFakePatientGeneralInfoTableSeeder::class,
-//            SeedFakePatientTrackedInfoTableSeeder::class,
+            DoctorDatabaseSeeder::class,
+            SeedFakePatientsTableSeeder::class,
+            SeedFakePatientGeneralInfoTableSeeder::class,
+            SeedFakePatientTrackedInfoTableSeeder::class,
             SeedFakePatientSkillsTableSeeder::class,
+            SeedFakeAdminsTableSeeder::class,
         ]);
     }
 }

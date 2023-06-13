@@ -44,8 +44,7 @@ class SeedFakePatientGeneralInfoTableSeeder extends Seeder
             $pInfo->SpO = $faker->numberBetween(0, 50);
             $pInfo->diabetes = $faker->randomElement(['Отсутствует', "Первичный", "Вторичный"]);
             $pInfo->dysphasia = $faker->randomElement(['Отсутствует', "Сенсерная", "Моторная", "Дизартрия"]);
-            $pInfo->visual_or_sensory_extinction = $faker->randomElement(['Отсутствует', "Зритекльное", "Сенсерное", "Присутствуют оба"]);
-            $pInfo->swallowing = $faker->randomElement(['Способен', "Не способен"]);
+            $pInfo->visual_or_sensory_extinction = $faker->randomElement(['Отсутствует', "Зрительное", "Сенсерное", "Присутствуют оба"]);
             $pInfo->swallowing = $faker->randomElement(['Способен', "Не способен"]);
             $pInfo->talk = $faker->randomElement(['Нет', "Есть"]);
             $pInfo->anxiety = $faker->randomElement(['Нет', "Есть"]);

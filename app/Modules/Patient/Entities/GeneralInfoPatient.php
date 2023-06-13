@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * @property int $id
  * @property int $patient_id
- * @property int|null $visit_date
- * @property int|null $disease_date
+ * @property mixed|null $visit_date
+ * @property mixed|null $disease_date
  * @property string|null $address
  * @property string|null $relatives_info
  * @property int|null $height
@@ -22,10 +22,10 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $Ps
  * @property string|null $SpO
  * @property string|null $diabetes
+ * @property string|null $dysphasia
  * @property string|null $visual_or_sensory_extinction
  * @property string|null $swallowing
  * @property string|null $talk
- * @property string|null $dysphasia
  * @property string|null $nerv_status
  * @property string|null $anxiety
  * @property string|null $cardio_system

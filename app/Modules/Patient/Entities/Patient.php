@@ -3,6 +3,7 @@
 namespace App\Modules\Patient\Entities;
 
 use App\Http\Middleware\Authenticate;
+use App\Modules\Doctor\Entities\Doctor;
 use App\Modules\Patient\Database\factories\PatientFactory;
 use App\Modules\User\Entities\User;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -18,13 +19,14 @@ use Illuminate\Support\Facades\Hash;
  * @property string $midname
  * @property string $gender
  * @property string $number_phone
- * @property int $bdate
+ * @property mixed $bdate
  * @property string $email
  * @property string $password
- * @property \Illuminate\Support\Carbon|null $registration_at
+ * @property string|null $email_verified_at
  * @property string|null $remember_token
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property int|null $doctor_id
  */
 class Patient extends User
 {
@@ -81,5 +83,10 @@ class Patient extends User
     public static function getAllPatients()
     {
         return self::all();
+    }
+
+    public function doctor()
+    {
+        return $this->belongsTo(Doctor::class);
     }
 }

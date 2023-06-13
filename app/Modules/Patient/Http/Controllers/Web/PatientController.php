@@ -3,9 +3,7 @@
 namespace App\Modules\Patient\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
-use App\Modules\Mobility\Entities\Mobility;
 use App\Modules\Patient\Entities\GeneralInfoPatient;
-use App\Modules\Patient\Entities\Patient;
 use App\Modules\Patient\Entities\TrackedInfoPatient;
 use Auth;
 use DB;
@@ -13,13 +11,13 @@ use Illuminate\Http\Request;
 
 class PatientController extends Controller
 {
-    public function viewPatient(Request $request)
+    public  function viewPatient(Request $request)
     {
+
         $patient = Auth::user()->generalInfo;
         if (!$patient) $patient = new GeneralInfoPatient();
-        return view('app.patient_info', ['patient' => $patient]);
+        return view('app.patient.patient_info', ['patient' => $patient]);
     }
-
 
     public function setPatient(Request $request)
     {
@@ -45,7 +43,7 @@ class PatientController extends Controller
         if (!$patient) $patient = new TrackedInfoPatient();
 
         $SRM_data = DB::table('SRM_descr')->get()->all();
-        return view('app.special_patient_info', ['patient' => $patient, 'srm' => $SRM_data]);
+        return view('app.patient.special_patient_info', ['patient' => $patient, 'srm' => $SRM_data]);
     }
 
     public function setTrackedData(Request $request)

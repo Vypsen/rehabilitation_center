@@ -1,33 +1,36 @@
 @extends('app.header')
 
 @section('app')
-    <div class="row col-xxl-8 col-md-9 justify-content-center mx-auto">
+    <div class="row col-xxl-9 col-md-10 justify-content-center mx-auto">
+        @auth('patient')
         <h5 class="alert alert-warning d-flex align-items-center" role="alert">
             <i class="fa-solid fa-triangle-exclamation me-2"></i>
             <div>
                 Не забывайте вносить изменения в личный кабинет
             </div>
         </h5>
-        <div class="col-xxl-3 col-md-3">
+        @endauth
+        <div class="col-xxl-3 col-md-4 fs-5">
             <div class="card position-fixed">
-                <div class="card-body">
-                    <nav class="nav flex-column menu-user" style="font-size: 15px;">
+                <div class="card-body pe-5">
+                    <nav class="nav flex-column menu-user">
                         <a class="nav-link {{ Request::url() == route('my') ? 'active' : '' }}" href="/my"><i
                                 class="fa-solid fa-user me-2"></i>Общая
                             информация</a>
+                        @auth('patient')
                         <a class="nav-link {{ Request::url() == route('patient') ? 'active' : '' }}" href="/patient"><i
                                 class="fa-sharp fa-solid fa-hospital-user me-2"></i>Первичный
                             осмотр</a>
                         <a class="nav-link {{ Request::url() == route('tracked-patient-data') ? 'active' : '' }}"
-                           href="/tracked-patient-data"><i style="font-size: 17px;"
-                                                           class="fa-sharp fa-solid fa-person-cane me-2"></i>Спец.данные</a>
+                           href="/tracked-patient-data"><i class="fa-sharp fa-solid fa-person-cane me-2"></i>Спец.данные</a>
                         <a class="nav-link {{ Request::url() == route('skills') ? 'active' : '' }}" href="/skills"><i
                                 class="fa-solid fa-person-running me-2"></i>Навыки пациента</a>
+                        @endauth
                     </nav>
                 </div>
             </div>
         </div>
-        <div class="col-xxl-9 col-md-9">
+        <div class="col-xxl-9 col-md-8">
             <div class="card">
                 <div class="card-body">
                     @yield('info')
@@ -45,10 +48,6 @@
         }
     </style>
     <script>
-        // $(document).ready(function () {
-        //     let path = window.location.pathname;
-        //     path = path.replace('/', '.');
-        //     $(".menu-user " + path).css('color', '#0a58ca');
-        // })
+
     </script>
 @endsection

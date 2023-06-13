@@ -80,7 +80,7 @@ return [
 
         'doctors' => [
             'driver' => 'eloquent',
-            'model' => \App\Modules\User\Entities\Doctor::class,
+            'model' => \App\Modules\Doctor\Entities\Doctor::class,
         ],
 
         'users' => [
@@ -90,7 +90,7 @@ return [
 
         'admins' => [
             'driver' => 'eloquent',
-            'model' => \App\Modules\User\Entities\Admin::class,
+            'model' => \App\Modules\Admin\Entities\Admin::class,
         ],
     ],
 
