@@ -13,7 +13,7 @@ class UserController extends Controller
     {
         $user = Auth::user();
 
-        return view('app.user', ['user' => $user]);
+        return view('app.my', ['user' => $user]);
 
 //        $guard = Auth::getDefaultDriver();
 //        if ($guard == 'patient') {

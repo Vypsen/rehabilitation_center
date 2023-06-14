@@ -12,7 +12,7 @@ Route::prefix('create')->group(function () {
 });
 
 Route::prefix('admin')->middleware('auth:admin')->group(function () {
-    Route::get('/doctors', AdminController::class . "@viewDoctors");
+    Route::get('/doctors', AdminController::class . "@viewDoctors")->name('search-doctors');
     Route::get('/admins', AdminController::class . "@viewAdmins");
-    Route::get('/patients', AdminController::class . "@viewPatients");
+    Route::get('/patients', AdminController::class . "@viewPatients")->name('search-patients');
 });

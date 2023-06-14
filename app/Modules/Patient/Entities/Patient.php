@@ -28,9 +28,39 @@ use Illuminate\Support\Facades\Hash;
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property int|null $doctor_id
  */
-class Patient extends User
+class Patient extends Authenticatable implements MustVerifyEmail
 {
+    use \App\Traits\UserTraits;
     use Notifiable;
+
+    protected $fillable = [
+        'name',
+        'lastname',
+        'midname',
+        'number_phone',
+        'email',
+        'gender',
+        'bdate',
+    ];
+
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var array<int, string>
+     */
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'registration_at' => 'datetime',
+    ];
 
     protected $table = 'patients';
 

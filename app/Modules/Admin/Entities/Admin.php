@@ -2,7 +2,9 @@
 
 namespace App\Modules\Admin\Entities;
 
-use App\Modules\User\Entities\User;
+use App\Traits\UserTraits;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
  * @property int $id
@@ -19,7 +21,37 @@ use App\Modules\User\Entities\User;
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  */
-class Admin extends User
+class Admin extends Authenticatable implements MustVerifyEmail
 {
+    use UserTraits;
+
+    protected $fillable = [
+        'name',
+        'lastname',
+        'midname',
+        'number_phone',
+        'email',
+        'gender',
+        'bdate',
+    ];
+
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var array<int, string>
+     */
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'registration_at' => 'datetime',
+    ];
     protected $table = 'admins';
 }
