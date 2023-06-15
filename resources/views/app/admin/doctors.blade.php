@@ -41,7 +41,6 @@
 @endsection
 
 <style>
-
     .pagination .page-link {
         color: #199c68;
     }

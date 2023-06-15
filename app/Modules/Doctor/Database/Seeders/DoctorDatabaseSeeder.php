@@ -3,6 +3,8 @@
 namespace App\Modules\Doctor\Database\Seeders;
 
 use App\Modules\Doctor\Entities\Doctor;
+use App\Modules\Patient\Entities\Patient;
+use Doctrine\DBAL\Schema\Table;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 
@@ -17,6 +19,7 @@ class DoctorDatabaseSeeder extends Seeder
     {
         Doctor::unguard();
         Doctor::query()->delete();
+        \DB::table('doctors_patients')->delete();
 
         $my = new Doctor();
         $my->name = "Сергей";
@@ -26,11 +29,21 @@ class DoctorDatabaseSeeder extends Seeder
         $my->post = "тест пост";
         $my->number_phone = "+79241506156";
         $my->gender = "М";
+        $my->email_verified_at = now();
         $my->email = "s.semenets2003@mail.ru";
         $my->password = bcrypt('123');
 
         $my->save();
 
         Doctor::factory(random_int(10, 30))->create();
+
+        $patientsIds = Patient::query()->get('id');
+        foreach (Doctor::all() as $doc) {
+            for ($j = 0; $j < random_int(2, 5); ++$j) {
+                $doc->patients()->save($patientsIds->random());
+            }
+        }
     }
+
+
 }

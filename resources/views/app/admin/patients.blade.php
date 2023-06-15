@@ -7,7 +7,7 @@
                 <div class="h4">Пациенты</div>
                 <div class="row">
                     <form method="GET" action="{{ route('search-patients') }}">
-                        <input type="text" name="patient" class="form-control" placeholder="Фамилия пациента ила врача">
+                        <input type="text" name="patient" class="form-control" value="{{ request('patient') }}" placeholder="Фамилия пациента или врача">
                     </form>
                 </div>
                 <div class="mt-3">
@@ -22,9 +22,6 @@
                                     </div>
                                     <div class="">Диагноз: {{ $patient->generalInfo->disease }}</div>
                                     <div class="">Возраст: {{ $patient->getAge() }}</div>
-                                    <div class="">Лечащий
-                                        врач:<a style="border-bottom: 1px dashed grey;"
-                                                     class="link-secondary text-decoration-none" href=""> {{ $patient->doctor->getFullName() }}</a></div>
                                 </div>
                                 <div class="">
 

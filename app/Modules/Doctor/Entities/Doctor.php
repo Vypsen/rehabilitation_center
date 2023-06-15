@@ -2,10 +2,13 @@
 
 namespace App\Modules\Doctor\Entities;
 
-use App\Modules\User\Entities\User;
+use App\Modules\Patient\Entities\Patient;
 use App\Traits\UserTraits;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
 /**
  * @property int $id
@@ -25,7 +28,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  */
 class Doctor extends Authenticatable implements MustVerifyEmail
 {
-    use UserTraits;
+    use UserTraits, HasApiTokens, HasFactory, Notifiable;
 
     protected $fillable = [
         'name',
@@ -62,6 +65,11 @@ class Doctor extends Authenticatable implements MustVerifyEmail
     protected static function newFactory()
     {
         return \App\Modules\Doctor\Database\factories\DoctorFactory::new();
+    }
+
+    public function patients()
+    {
+        return $this->belongsToMany(Patient::class, 'doctors_patients', 'doctor_id', 'patient_id');
     }
 
 }

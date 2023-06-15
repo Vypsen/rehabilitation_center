@@ -6,11 +6,14 @@ use App\Http\Middleware\Authenticate;
 use App\Modules\Doctor\Entities\Doctor;
 use App\Modules\Patient\Database\factories\PatientFactory;
 use App\Modules\User\Entities\User;
+use App\Traits\UserTraits;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
+use Laravel\Sanctum\HasApiTokens;
 
 /**
  * @property int $id
@@ -30,8 +33,8 @@ use Illuminate\Support\Facades\Hash;
  */
 class Patient extends Authenticatable implements MustVerifyEmail
 {
-    use \App\Traits\UserTraits;
-    use Notifiable;
+    use UserTraits, HasApiTokens, HasFactory, Notifiable;
+
 
     protected $fillable = [
         'name',
@@ -117,6 +120,6 @@ class Patient extends Authenticatable implements MustVerifyEmail
 
     public function doctor()
     {
-        return $this->belongsTo(Doctor::class);
+        return $this->belongsToMany(Doctor::class, 'doctors_patients', 'patient_id', 'doctor_id');
     }
 }

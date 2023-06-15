@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Modules\User\Http\Controllers;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\Http\Requests\LoginApiRequest;
+use App\Http\Requests\RegisterApiRequest;
 use App\Modules\User\Entities\User;
 use App\Modules\User\Enums\RolesType;
-use App\Modules\User\Http\Requests\LoginApiRequest;
-use App\Modules\User\Http\Requests\RegisterApiRequest;
 use App\OpenApi\Parameters\Auth\LoginParameters;
 use App\OpenApi\Parameters\Auth\RegisterParameters;
 use App\OpenApi\Responses\Auth\FailedValidationResponse;

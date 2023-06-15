@@ -28,8 +28,21 @@
                                    data-bs-toggle="dropdown"> Пользователи
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="/admin/doctors">Доктора</a>
-                                    <a class="dropdown-item" href="/admin/patients">Пациенты</a>
+                                    <a class="dropdown-item" href="/doctors">Доктора</a>
+                                    <a class="dropdown-item" href="/patients">Пациенты</a>
+                                </div>
+                            </div>
+                        </li>
+                    @endauth
+                    @auth('doctor')
+                        <li class="nav-item">
+                            <div class="d-flex dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" role="button"
+                                   data-bs-toggle="dropdown"> Пользователи
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="/doctors">Доктора</a>
+                                    <a class="dropdown-item" href="/patients">Пациенты</a>
                                 </div>
                             </div>
                         </li>

@@ -25,12 +25,11 @@ return new class extends Migration
             $table->string('password');
             $table->timestamp('email_verified_at')->nullable();
 
-            $table->integer('doctor_id')->unsigned();
-            $table->foreign('doctor_id')
-                ->references('id')->on('doctors')
-                ->cascadeOnDelete();
+//            $table->integer('doctor_id')->unsigned();
+//            $table->foreign('doctor_id')
+//                ->references('id')->on('doctors')
+//                ->cascadeOnDelete();
 
-            $table->date('bdate');
             $table->rememberToken();
             $table->timestamps();
         });

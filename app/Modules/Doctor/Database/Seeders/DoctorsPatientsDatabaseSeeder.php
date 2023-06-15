@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Modules\Patient\Database\Seeders;
+namespace App\Modules\Doctor\Database\Seeders;
 
 use App\Modules\Doctor\Entities\Doctor;
-use App\Modules\Patient\Entities\Patient;
-use Faker\Generator;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Eloquent\Model;
 
-class SeedFakePatientsTableSeeder extends Seeder
+class DoctorsPatientsDatabaseSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,23 +15,22 @@ class SeedFakePatientsTableSeeder extends Seeder
      */
     public function run()
     {
-        /** @var Generator $faker */
-        $faker = app(Generator::class);
+        Doctor::unguard();
+        Doctor::query()->delete();
 
-        Patient::unguard();
-        Patient::query()->delete();
-
-        $my = new Patient();
+        $my = new Doctor();
         $my->name = "Сергей";
         $my->lastname = "Семенец";
         $my->midname = "Олегович";
         $my->bdate = "2001-04-20";
+        $my->post = "тест пост";
         $my->number_phone = "+79241506156";
         $my->gender = "М";
-        $my->email = "s.semenets2001@mail.ru";
+        $my->email = "s.semenets2003@mail.ru";
         $my->password = bcrypt('123');
+
         $my->save();
 
-        Patient::factory(random_int(15, 30))->create();
+        Doctor::factory(random_int(10, 30))->create();
     }
 }

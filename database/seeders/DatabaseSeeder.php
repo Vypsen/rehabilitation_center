@@ -20,12 +20,12 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
+//            SeedFakePatientsTableSeeder::class,
+//            SeedFakePatientGeneralInfoTableSeeder::class,
+//            SeedFakePatientTrackedInfoTableSeeder::class,
+//            SeedFakePatientSkillsTableSeeder::class,
+//            SeedFakeAdminsTableSeeder::class,
             DoctorDatabaseSeeder::class,
-            SeedFakePatientsTableSeeder::class,
-            SeedFakePatientGeneralInfoTableSeeder::class,
-            SeedFakePatientTrackedInfoTableSeeder::class,
-            SeedFakePatientSkillsTableSeeder::class,
-            SeedFakeAdminsTableSeeder::class,
         ]);
     }
 }

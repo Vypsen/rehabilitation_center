@@ -4,7 +4,10 @@ namespace App\Modules\Admin\Entities;
 
 use App\Traits\UserTraits;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
 /**
  * @property int $id
@@ -23,7 +26,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  */
 class Admin extends Authenticatable implements MustVerifyEmail
 {
-    use UserTraits;
+    use UserTraits, HasApiTokens, HasFactory, Notifiable;
 
     protected $fillable = [
         'name',

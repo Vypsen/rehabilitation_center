@@ -1,16 +1,13 @@
 <?php
 
-namespace App\Modules\User\Http\Controllers\Web;
+namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Modules\Doctor\Entities\Doctor;
 use App\Modules\Patient\Entities\Patient;
-use App\Modules\User\Entities\User;
-use App\Modules\User\Rules\ValidationPhoneRule;
+use App\Rules\ValidationPhoneRule;
 use Auth;
-use Cookie;
 use Illuminate\Auth\Events\Registered;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 
 class AuthController extends Controller
