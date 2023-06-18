@@ -1,7 +1,5 @@
 FROM php:8.0-fpm
 
-WORKDIR /var/www/center
-
 RUN apt-get update && apt-get install -y \
     build-essential \
     libpng-dev \
@@ -25,8 +23,6 @@ RUN apt-get update && apt-get install -y \
 
 RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
 RUN apt-get install -y nodejs
-
-COPY . .
 
 ENV COMPOSER_ALLOW_SUPERUSER=1
 RUN curl -sS https://getcomposer.org/installer | php -- \

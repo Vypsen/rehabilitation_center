@@ -2,78 +2,37 @@
 
 namespace App\Modules\Doctor\Http\Controllers;
 
+use App\Modules\Patient\Entities\Patient;
+use Auth;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
 class DoctorController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     * @return Renderable
-     */
-    public function index()
+    public function addMyPatient(Request $request)
     {
-        return view('doctor::index');
+        $doctor = Auth::user();
+
+        $idPatient = $request->all()['id'];
+        $patient = Patient::query()->where('id', '=', $idPatient)->first();
+
+        $doctor->patients()->save($patient);
+
+        return true;
+
     }
 
-    /**
-     * Show the form for creating a new resource.
-     * @return Renderable
-     */
-    public function create()
+    public function delMyPatient(Request $request)
     {
-        return view('doctor::create');
-    }
+        $doctor = Auth::user();
 
-    /**
-     * Store a newly created resource in storage.
-     * @param Request $request
-     * @return Renderable
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+        $idPatient = $request->all()['id'];
+        $patient = Patient::query()->where('id', '=', $idPatient)->first();
 
-    /**
-     * Show the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function show($id)
-    {
-        return view('doctor::show');
-    }
+        $doctor->patients()->detach($patient);
 
-    /**
-     * Show the form for editing the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function edit($id)
-    {
-        return view('doctor::edit');
-    }
+        return true;
 
-    /**
-     * Update the specified resource in storage.
-     * @param Request $request
-     * @param int $id
-     * @return Renderable
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     * @param int $id
-     * @return Renderable
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

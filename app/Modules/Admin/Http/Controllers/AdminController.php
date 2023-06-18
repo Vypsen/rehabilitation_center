@@ -3,18 +3,13 @@
 namespace App\Modules\Admin\Http\Controllers;
 
 use App\Modules\Doctor\Entities\Doctor;
-use App\Modules\Patient\Entities\Patient;
 use App\Rules\ValidationPhoneRule;
-use DB;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
 class AdminController extends Controller
 {
-
-
-
     public function createDoctor(Request $request)
     {
         $request->validate([
@@ -31,6 +26,4 @@ class AdminController extends Controller
 
         return redirect(route('my'));
     }
-
-
 }

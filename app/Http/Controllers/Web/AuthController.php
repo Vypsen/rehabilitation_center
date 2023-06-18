@@ -62,9 +62,9 @@ class AuthController extends Controller
             'password' => 'required',
         ]);
 
-        if (Patient::query()->where('email', $data['email'])->whereNotNull('email_verified_at')->first()) {
+        if (Patient::query()->where('email', $data['email'])->first()) {
             $guard = 'patient';
-        } else if (Doctor::query()->where('email', $data['email'])->whereNotNull('email_verified_at')->first()) {
+        } else if (Doctor::query()->where('email', $data['email'])->first()) {
             $guard = 'doctor';
         } else $guard = 'admin';
 

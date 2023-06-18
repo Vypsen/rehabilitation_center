@@ -404,9 +404,3 @@
 
 
 </style>
-
-<script>
-    $(document).ready(function () {
-        $('.patient').addClass('disabled').css('color', '#199c68').css('background-color', 'white');
-    })
-</script>

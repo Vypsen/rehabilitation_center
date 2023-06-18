@@ -136,15 +136,4 @@
             </div>
         </div>
     </div>
-    <script>
-        $(document).ready(function () {
-            $("input[name='disease']").on("change", function () {
-                if ($("#insult").is(":checked")) {
-                    $(".brain-side").removeClass('d-none');
-                } else {
-                    $(".brain-side").addClass('d-none');
-                }
-            });
-        });
-    </script>
 @endsection

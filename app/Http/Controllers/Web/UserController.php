@@ -47,26 +47,33 @@ class UserController extends Controller
         $doctors = Doctor::query();
         if (!empty($data['doctor'])) {
             $doctors
-                ->where('lastname', 'ilike', '%'.$data['doctor'].'%')
-                ->orWhere('post', 'ilike', '%'.$data['doctor'].'%');
+                ->where('lastname', 'ilike', '%' . $data['doctor'] . '%')
+                ->orWhere('post', 'ilike', '%' . $data['doctor'] . '%');
         }
         $doctors = $doctors->paginate(10);
-        return view('app.admin.doctors', ['doctors' => $doctors]);
+        return view('app.doctors', ['doctors' => $doctors]);
     }
 
     public function viewPatients(Request $request)
     {
         $data = $request->all();
         $patients = Patient::query();
+        if (!empty($data['my_patients'])) {
+            $patients = Auth::user()->patients();
+        }
         if (!empty($data['patient'])) {
             $patients
-                ->where('patients.lastname', 'ilike', '%'.$data['patient'].'%')
-                ->orWhereHas('doctor', function ($query) use ($data) {
-                    $query->where('lastname', 'ilike', '%'.$data['patient'].'%');
+                ->where('patients.lastname', 'ilike', '%' . $data['patient'] . '%');
+        }
+        if (!empty($data['doctor_lastname'])) {
+            $patients
+                ->whereHas('doctor', function ($query) use ($data) {
+                    $query->where('lastname', 'ilike', '%' . $data['doctor_lastname'] . '%');
                 });
         }
 
+
         $patients = $patients->paginate(10);
-        return view('app.admin.patients', ['patients' => $patients]);
+        return view('app.patients', ['patients' => $patients]);
     }
 }

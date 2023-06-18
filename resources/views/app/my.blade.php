@@ -82,12 +82,4 @@
             </div>
         </form>
     </div>
-    <style>
-
-    </style>
-    <script>
-        $(document).ready(function () {
-            $('.user').css('color', '#199c68').css('background-color', 'white');
-        })
-    </script>
 @endsection
