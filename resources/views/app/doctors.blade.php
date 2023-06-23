@@ -7,7 +7,15 @@
                 <div class="h4">Доктора</div>
                 <div class="row">
                     <form method="GET" action="{{ route('search-doctors') }}">
-                        <input type="text" name="doctor" class="form-control" placeholder="Фамилия или должность">
+                        <div class="row">
+                            <div class="col-6">
+                                <input type="text" value="{{ request('doctor') }}" name="doctor" class="form-control"
+                                       placeholder="Фамилия или должность">
+                            </div>
+                            <div class="col-md-2">
+                                <button class="btn btn-success">Найти</button>
+                            </div>
+                        </div>
                     </form>
                 </div>
                 <div class="mt-3">
@@ -18,10 +26,11 @@
                                 <div class="">
                                     <div class="">
                                         <a href="" class="link-secondary text-decoration-none"
-                                           style="border-bottom: 1px dashed grey;">{{ $doctor->getFullName() }}</a>
+                                           style="border-bottom: 1px dashed grey;">{{ $doctor->getFullName() }}</a><a title="Найти пациетов" class="link-success ms-2" href="" ><i class="fa-solid fa-magnifying-glass"></i></a>
                                     </div>
-                                    <div class="">Возраст: {{ $doctor->getAge() }}</div>
                                     <div class="">Должность: <b>{{ $doctor->post}}</b></div>
+                                    <div class="">e-mail: <b>{{ $doctor->email}}</b></div>
+                                    <div class="">Номер телефона: <b>{{ $doctor->number_phone}}</b></div>
                                 </div>
                                 <div class="">
 

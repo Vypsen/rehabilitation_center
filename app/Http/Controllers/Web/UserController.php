@@ -8,6 +8,7 @@ use App\Modules\Patient\Entities\Patient;
 use App\Rules\ValidationPhoneRule;
 use Auth;
 use Illuminate\Http\Request;
+use function Termwind\render;
 
 class UserController extends Controller
 {
@@ -75,5 +76,12 @@ class UserController extends Controller
 
         $patients = $patients->paginate(10);
         return view('app.patients', ['patients' => $patients]);
+    }
+
+    public function patient($id)
+    {
+        $patient = Patient::query()->where('id', $id)->first();
+
+        return view('app.view-patient', ['patient' => $patient]);
     }
 }

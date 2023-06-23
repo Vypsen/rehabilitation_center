@@ -2,7 +2,6 @@
 
 namespace App\Console;
 
-use App\Modules\Recover\Console\CreateGroupsCommand;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -10,7 +9,6 @@ class Kernel extends ConsoleKernel
 {
 
     protected $commands = [
-        CreateGroupsCommand::class,
     ];
 
     /**

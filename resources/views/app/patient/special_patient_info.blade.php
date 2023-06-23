@@ -11,37 +11,72 @@
                         <table class="table table-hover">
                             <thead>
                             <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Тактильная</th>
-                                <th scope="col">Температурная</th>
-                                <th scope="col" class="col-md-2">Болевая</th>
-                                <th scope="col" class="col-md-8">Мышечно—суставное чувство</th>
+                                <th scope="col" class="col-md-1">#</th>
+                                <th scope="col" class="col-md-1">Тактильная</th>
+                                <th scope="col" class="col-md-1">Температурная</th>
+                                <th scope="col" class="col-md-1">Болевая</th>
+                                <th scope="col" class="col-md-1">Мышечно—суставное чувство</th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr>
                                 <th scope="row">Рука</th>
-                                <td><input name="hand_tactility" value="1"
-                                           {{$patient->hand_tactility ? 'checked' : ''}} type="checkbox"></td>
-                                <td><input name="hand_t" value="1"
-                                           {{$patient->hand_t ? 'checked' : ''}} type="checkbox"></td>
-                                <td><input name="hand_pain" value="1"
-                                           {{$patient->hand_pain ? 'checked' : ''}} type="checkbox"></td>
-                                <td><input name="hand_musculoskeletal_feeling" value="1"
-                                           {{$patient->hand_musculoskeletal_feeling ? 'checked' : ''}} type="checkbox">
-                                </td>
+{{--                                <td><input name="hand_tactility" value="1" {{$patient->hand_tactility ? 'checked' : ''}} type="checkbox"></td>--}}
+                                <td><select  class="form-select" aria-label="Hour"  id="sleep_count" name="sleep_count">
+                                        <?php for ($i = 1; $i <= 10; $i++): ?>
+                                        <option {{$patient->sleep_count == $i ? 'selected' : ''}} value="<?= $i ?>"><?= $i ?></option>
+                                        <?php endfor; ?>
+                                    </select></td><td><select  class="form-select" aria-label="Hour"  id="sleep_count" name="sleep_count">
+                                        <?php for ($i = 1; $i <= 10; $i++): ?>
+                                        <option {{$patient->sleep_count == $i ? 'selected' : ''}} value="<?= $i ?>"><?= $i ?></option>
+                                        <?php endfor; ?>
+                                    </select></td><td><select  class="form-select" aria-label="Hour"  id="sleep_count" name="sleep_count">
+                                        <?php for ($i = 1; $i <= 10; $i++): ?>
+                                        <option {{$patient->sleep_count == $i ? 'selected' : ''}} value="<?= $i ?>"><?= $i ?></option>
+                                        <?php endfor; ?>
+                                    </select></td>
+                                <td class="col-1"><select  class="form-select" aria-label="Hour"  id="sleep_count" name="sleep_count">
+                                        <?php for ($i = 1; $i <= 10; $i++): ?>
+                                        <option {{$patient->sleep_count == $i ? 'selected' : ''}} value="<?= $i ?>"><?= $i ?></option>
+                                        <?php endfor; ?>
+                                    </select></td>
+{{--                                <td><input name="hand_t" value="1"--}}
+{{--                                           {{$patient->hand_t ? 'checked' : ''}} type="checkbox"></td>--}}
+{{--                                <td><input name="hand_pain" value="1"--}}
+{{--                                           {{$patient->hand_pain ? 'checked' : ''}} type="checkbox"></td>--}}
+{{--                                <td><input name="hand_musculoskeletal_feeling" value="1"--}}
+{{--                                           {{$patient->hand_musculoskeletal_feeling ? 'checked' : ''}} type="checkbox">--}}
+{{--                                </td>--}}
                             </tr>
                             <tr>
                                 <th scope="row">Нога</th>
-                                <td><input name="leg_tactility" value="1"
-                                           {{$patient->leg_tactility ? 'checked' : ''}} type="checkbox"></td>
-                                <td><input name="leg_t" value="1" {{$patient->leg_t ? 'checked' : ''}} type="checkbox">
-                                </td>
-                                <td><input name="leg_pain" value="1"
-                                           {{$patient->leg_pain ? 'checked' : ''}} type="checkbox"></td>
-                                <td><input name="leg_musculoskeletal_feeling" value="1"
-                                           {{$patient->leg_musculoskeletal_feeling ? 'checked' : ''}} type="checkbox">
-                                </td>
+{{--                                <td><input name="leg_tactility" value="1"--}}
+{{--                                           {{$patient->leg_tactility ? 'checked' : ''}} type="checkbox"></td>--}}
+{{--                                <td><input name="leg_t" value="1" {{$patient->leg_t ? 'checked' : ''}} type="checkbox">--}}
+{{--                                </td>--}}
+{{--                                <td><input name="leg_pain" value="1"--}}
+{{--                                           {{$patient->leg_pain ? 'checked' : ''}} type="checkbox"></td>--}}
+{{--                                <td><input name="leg_musculoskeletal_feeling" value="1"--}}
+{{--                                           {{$patient->leg_musculoskeletal_feeling ? 'checked' : ''}} type="checkbox">--}}
+{{--                                </td>--}}
+                                <td><select  class="form-select" aria-label="Hour"  id="sleep_count" name="sleep_count">
+                                        <?php for ($i = 1; $i <= 10; $i++): ?>
+                                        <option {{$patient->sleep_count == $i ? 'selected' : ''}} value="<?= $i ?>"><?= $i ?></option>
+                                        <?php endfor; ?>
+                                    </select></td><td><select  class="form-select" aria-label="Hour"  id="sleep_count" name="sleep_count">
+                                        <?php for ($i = 1; $i <= 10; $i++): ?>
+                                        <option {{$patient->sleep_count == $i ? 'selected' : ''}} value="<?= $i ?>"><?= $i ?></option>
+                                        <?php endfor; ?>
+                                    </select></td><td><select  class="form-select" aria-label="Hour"  id="sleep_count" name="sleep_count">
+                                        <?php for ($i = 1; $i <= 10; $i++): ?>
+                                        <option {{$patient->sleep_count == $i ? 'selected' : ''}} value="<?= $i ?>"><?= $i ?></option>
+                                        <?php endfor; ?>
+                                    </select></td>
+                                <td class="col-1"><select  class="form-select" aria-label="Hour"  id="sleep_count" name="sleep_count">
+                                        <?php for ($i = 1; $i <= 10; $i++): ?>
+                                        <option {{$patient->sleep_count == $i ? 'selected' : ''}} value="<?= $i ?>"><?= $i ?></option>
+                                        <?php endfor; ?>
+                                    </select></td>
                             </tr>
                             </tbody>
                         </table>

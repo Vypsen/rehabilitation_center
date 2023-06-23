@@ -69,7 +69,13 @@ class Doctor extends Authenticatable implements MustVerifyEmail
 
     public function patients()
     {
-        return $this->belongsToMany(Patient::class, 'doctors_patients', 'doctor_id', 'patient_id');
+        return $this->belongsToMany(Patient::class, 'doctors_patients', 'doctor_id', 'patient_id')
+            ->withPivot('created_at', 'comment');
+    }
+
+    static public function doctorById($id)
+    {
+        return self::query()->where('id', $id)->first();
     }
 
 }

@@ -1,9 +1,9 @@
 @extends('app')
 
 @section('content')
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top flex-md-row" style="background-color: #199c68;">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top flex-md-row" style="background-color: #17915d;">
         <div class="container-fluid mx-5">
-            <a class="navbar-brand" href="/">Тут название</a>
+            <a class="navbar-brand" href="/">ЦИВЗ</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -18,26 +18,15 @@
                     </li>
                     @auth('patient')
                         <li class="nav-item">
-                            <a class="nav-link" href="">Просмотреть материал для восстановления</a>
+                            <a class="nav-link" href="{{route('recover')}}">Просмотреть материал для восстановления</a>
                         </li>
                     @endauth
-                    @auth('admin')
-                        <li class="nav-item">
-                            <div class="d-flex dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" role="button"
-                                   data-bs-toggle="dropdown"> Пользователи
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="/doctors">Доктора</a>
-                                    <a class="dropdown-item" href="/patients">Пациенты</a>
-                                </div>
-                            </div>
-                        </li>
-                    @endauth
+
                     @auth('doctor')
                         <li class="nav-item">
                             <div class="d-flex dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" role="button"
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#"
+                                   role="button"
                                    data-bs-toggle="dropdown"> Пользователи
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -74,7 +63,9 @@
 
     </style>
 
-    <div style="margin: 12vh 0;" class="container-fluid">
-        @yield('app')
+    <div style="background: -webkit-linear-gradient(90deg, rgb(147,232,179), rgb(107,222,152), rgb(90,204,135), rgb(77,182,117)) no-repeat;" class="min-vh-100">
+        <div style="padding: 12vh 0;" class="container-fluid">
+            @yield('app')
+        </div>
     </div>
 @endsection

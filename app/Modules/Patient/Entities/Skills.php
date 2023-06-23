@@ -2,7 +2,6 @@
 
 namespace App\Modules\Patient\Entities;
 
-use App\Modules\User\Entities\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 

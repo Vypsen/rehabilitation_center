@@ -108,6 +108,11 @@ class Patient extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Skills::class);
     }
 
+    public function notCanSkill()
+    {
+        return $this->skills()->get()->toArray()[0];
+    }
+
     public function lastSkills()
     {
         return $this->skills()->latest()->first();
@@ -120,6 +125,7 @@ class Patient extends Authenticatable implements MustVerifyEmail
 
     public function doctor()
     {
-        return $this->belongsToMany(Doctor::class, 'doctors_patients', 'patient_id', 'doctor_id');
+        return $this->belongsToMany(Doctor::class, 'doctors_patients', 'patient_id', 'doctor_id')
+            ->withPivot('created_at', 'comment');
     }
 }

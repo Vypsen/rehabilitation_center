@@ -5,6 +5,7 @@ namespace App\Modules\Doctor\Database\Seeders;
 use App\Modules\Doctor\Entities\Doctor;
 use App\Modules\Patient\Entities\Patient;
 use Doctrine\DBAL\Schema\Table;
+use Faker\Generator;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 
@@ -17,6 +18,9 @@ class DoctorDatabaseSeeder extends Seeder
      */
     public function run()
     {
+        /** @var Generator $faker */
+        $faker = app(Generator::class);
+
         Doctor::unguard();
         Doctor::query()->delete();
         \DB::table('doctors_patients')->delete();
@@ -43,6 +47,14 @@ class DoctorDatabaseSeeder extends Seeder
                 $doc->patients()->save($patientsIds->random());
             }
         }
+        foreach (Doctor::all() as $doc) {
+            foreach ($doc->patients as $pat) {
+                $pat->pivot->comment = $faker->text();
+                $pat->pivot->created_at = now();
+                $pat->pivot->save();
+            }
+        }
+
     }
 
 

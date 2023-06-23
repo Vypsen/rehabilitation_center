@@ -43,5 +43,8 @@ Route::middleware(['auth:doctor,patient,admin'])->group(function () {
 Route::middleware(['auth:doctor,admin'])->group(function () {
     Route::get('/doctors', UserController::class . "@viewDoctors")->name('search-doctors');
     Route::get('/patients', UserController::class . "@viewPatients")->name('search-patients');
+
+    Route::get('/patient/{id}', UserController::class . "@patient")->name('view-patient');
+
 });
 

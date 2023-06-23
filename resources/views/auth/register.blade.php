@@ -125,7 +125,7 @@
                             </div>
                             <div class="row mb-0">
                                 <div class="col-6 d-grid mx-auto">
-                                    <button type="submit" class="btn btn-primary">
+                                    <button type="submit" class="btn btn-success">
                                         Зарегистрироваться
                                     </button>
                                 </div>
