@@ -24,11 +24,22 @@
                                    href="/patient"><i
                                         class="fa-sharp fa-solid fa-hospital-user me-2"></i>Первичный
                                     осмотр</a>
-                                <a class="nav-link {{ Request::url() == route('tracked-patient-data') ? 'active' : '' }}"
-                                   href="/tracked-patient-data"><i class="fa-sharp fa-solid fa-person-cane me-2"></i>Спец.данные</a>
+                                <a class="nav-link {{ Request::url() == route('tracked-patient-data') ? 'active' : '' }}" href="/tracked-patient-data">
+                                    <i class="fa-sharp fa-solid fa-person-cane me-2"></i>Спец.данные
+                                </a>
                                 <a class="nav-link {{ Request::url() == route('skills') ? 'active' : '' }}"
                                    href="/skills"><i
-                                        class="fa-solid fa-person-running me-2"></i>Навыки пациента</a>
+                                        class="fa-solid fa-person-running me-2">
+                                    </i>Мои навыки
+                                </a>
+                            @endauth
+                            @auth('admin')
+                                <a class="nav-link {{ Request::url() == route('create-doctor') ? 'active' : '' }}" href="{{route('create-doctor')}}">
+                                    <i class="fa-solid fa-user-doctor me-2"></i>Создать доктора
+                                </a>
+                                <a class="nav-link {{ Request::url() == route('create-admin') ? 'active' : '' }}" href="{{route('create-admin')}}">
+                                    <i class="fa-solid fa-user-plus me-1"></i>Создать админа
+                                </a>
                             @endauth
                         </nav>
                     </div>

@@ -15,8 +15,8 @@ class RecoverController extends Controller
         $key = array_search(false, $skill);
         $exercises = config('recover')[$key];
 
-        $commentsDoctor = \DB::table('doctors_patients')->where('patient_id', $user->id)->get()->all();
+        $doctors = $user->doctors;
 
-        return view('app.patient.recover', ['user' => $user, 'exercises' => $exercises, 'commentsDoctor' => $commentsDoctor]);
+        return view('app.patient.recover', ['user' => $user, 'exercises' => $exercises, 'doctors' => $doctors]);
     }
 }

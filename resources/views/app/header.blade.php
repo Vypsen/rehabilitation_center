@@ -18,11 +18,27 @@
                     </li>
                     @auth('patient')
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('recover')}}">Просмотреть материал для восстановления</a>
+                            <a class="nav-link" href="{{route('recover')}}">Материал для восстановления</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('skills')}}">Мои навыки</a>
                         </li>
                     @endauth
-
                     @auth('doctor')
+                        <li class="nav-item">
+                            <div class="d-flex dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#"
+                                   role="button"
+                                   data-bs-toggle="dropdown"> Пользователи
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="/doctors">Доктора</a>
+                                    <a class="dropdown-item" href="/patients">Пациенты</a>
+                                </div>
+                            </div>
+                        </li>
+                    @endauth
+                    @auth('admin')
                         <li class="nav-item">
                             <div class="d-flex dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#"
@@ -45,9 +61,7 @@
                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="/my">Профиль</a>
                         <a class="dropdown-item" href="{{ route('logout') }}"
-                           onclick="event.preventDefault();
-                                                document.getElementById('logout-form').submit();">
-                            Выйти
+                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Выйти
                         </a>
 
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -59,12 +73,8 @@
         </div>
     </nav>
 
-    <style>
-
-    </style>
-
     <div style="background: -webkit-linear-gradient(90deg, rgb(147,232,179), rgb(107,222,152), rgb(90,204,135), rgb(77,182,117)) no-repeat;" class="min-vh-100">
-        <div style="padding: 12vh 0;" class="container-fluid">
+        <div style="padding: 10vh 0;" class="container-fluid">
             @yield('app')
         </div>
     </div>

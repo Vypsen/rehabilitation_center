@@ -20,7 +20,6 @@ class DoctorController extends Controller
         $doctor->patients()->save($patient);
 
         return true;
-
     }
 
     public function delMyPatient(Request $request)
@@ -33,6 +32,5 @@ class DoctorController extends Controller
         $doctor->patients()->detach($patient);
 
         return true;
-
     }
 }

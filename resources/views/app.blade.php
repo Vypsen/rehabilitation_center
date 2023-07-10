@@ -36,23 +36,14 @@
         width: 100%;
         height: 100%;
         box-sizing: border-box;
-        overflow-y: overlay !important; /* For scrollbar overlay on content */
+        overflow-y: overlay !important;
         overflow-x: hidden !important;
     }
 
-    /*.my-container::-webkit-scrollbar {*/
-    /*    width: 8px;*/
-    /*}*/
-
-    /*.my-container::-webkit-scrollbar-track {*/
-    /*    background: rgba(0, 0, 0, 0);*/
-    /*}*/
-
-    /*.my-container::-webkit-scrollbar-thumb {*/
-    /*    background: #888;*/
-    /*}*/
-
-    /*.my-container::-webkit-scrollbar-thumb:hover {*/
-    /*    background: rgba(0, 0, 0, 0);*/
-    /*}*/
+    .my-container::-webkit-scrollbar {
+        width: 10px;
+    }
+    .my-container::-webkit-scrollbar-thumb {
+        background: #888;
+    }
 </style>

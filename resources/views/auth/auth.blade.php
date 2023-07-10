@@ -30,7 +30,6 @@
                             <a class="nav-link" href="{{ route('register.post') }}">Зарегистрироваться</a>
                         </li>
                     @endif
-                @else
 
                 @endguest
             </ul>

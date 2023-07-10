@@ -30,15 +30,16 @@ class SeedFakePatientTrackedInfoTableSeeder extends Seeder
             $pTrackedInfo = new TrackedInfoPatient();
 
             $pTrackedInfo->patient_id = $patients[$i]->id;
-            $pTrackedInfo->hand_tactility = $faker->boolean();
-            $pTrackedInfo->hand_t = $faker->boolean();
-            $pTrackedInfo->hand_pain = $faker->boolean();
-            $pTrackedInfo->hand_musculoskeletal_feeling = $faker->boolean();
 
-            $pTrackedInfo->leg_tactility = $faker->boolean();
-            $pTrackedInfo->leg_t = $faker->boolean();
-            $pTrackedInfo->leg_pain = $faker->boolean();
-            $pTrackedInfo->leg_musculoskeletal_feeling = $faker->boolean();
+            $pTrackedInfo->hand_tactility = $faker->numberBetween(0, 10);
+            $pTrackedInfo->hand_t = $faker->numberBetween(0, 10);
+            $pTrackedInfo->hand_pain = $faker->numberBetween(0, 10);
+            $pTrackedInfo->hand_musculoskeletal_feeling = $faker->numberBetween(0, 10);
+
+            $pTrackedInfo->leg_tactility = $faker->numberBetween(0, 10);
+            $pTrackedInfo->leg_t = $faker->numberBetween(0, 10);
+            $pTrackedInfo->leg_pain = $faker->numberBetween(0, 10);
+            $pTrackedInfo->leg_musculoskeletal_feeling = $faker->numberBetween(0, 10);
 
             $pTrackedInfo->type_disorder = $faker->randomElement(['Двигательные', "Чувствительные"]);
             $pTrackedInfo->memory_loss = $faker->randomElement(['Отсутствует', "Кратковременная", "Долговременная"]);

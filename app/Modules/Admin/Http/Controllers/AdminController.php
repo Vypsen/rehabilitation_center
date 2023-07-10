@@ -10,6 +10,11 @@ use Illuminate\Routing\Controller;
 
 class AdminController extends Controller
 {
+    public function createDoctorView()
+    {
+        return view('app.admin.create_doctor');
+    }
+
     public function createDoctor(Request $request)
     {
         $request->validate([
@@ -23,7 +28,6 @@ class AdminController extends Controller
         $doctor->save();
         event(new Registered($doctor));
 
-
-        return redirect(route('my'));
+        return redirect(route('search-doctors'));
     }
 }

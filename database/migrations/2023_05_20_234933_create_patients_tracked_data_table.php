@@ -21,15 +21,15 @@ return new class extends Migration
                 ->references('id')->on('patients')
                 ->cascadeOnDelete();
 
-            $table->boolean('hand_tactility')->nullable()->default(0);
-            $table->boolean('hand_t')->nullable()->default(0);
-            $table->boolean('hand_pain')->nullable()->default(0);
-            $table->boolean('hand_musculoskeletal_feeling')->nullable()->default(0);
+            $table->integer('hand_tactility')->nullable()->default(0);
+            $table->integer('hand_t')->nullable()->default(0);
+            $table->integer('hand_pain')->nullable()->default(0);
+            $table->integer('hand_musculoskeletal_feeling')->nullable()->default(0);
 
-            $table->boolean('leg_tactility')->nullable()->default(0);
-            $table->boolean('leg_t')->nullable()->default(0);
-            $table->boolean('leg_pain')->nullable()->default(0);
-            $table->boolean('leg_musculoskeletal_feeling')->nullable()->default(0);
+            $table->integer('leg_tactility')->nullable()->default(0);
+            $table->integer('leg_t')->nullable()->default(0);
+            $table->integer('leg_pain')->nullable()->default(0);
+            $table->integer('leg_musculoskeletal_feeling')->nullable()->default(0);
 
             $table->string('type_disorder')->nullable();
             $table->string('memory_loss')->nullable();

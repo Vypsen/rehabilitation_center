@@ -29,29 +29,29 @@ box-shadow: 0px 0px 8px 4px rgba(34, 60, 80, 0.2);">
                             </div>
                             <div class="col-lg-4">
                                 <div class="h4 pb-2">Рекомендации докторов</div>
-                                @foreach($commentsDoctor as $comment)
+                                @foreach($doctors as $doctor)
                                     <div class="container mb-3" style="">
                                         <div class="card" style="-webkit-box-shadow: 0px 0px 8px 0px rgba(34, 60, 80, 0.2);
                                             -moz-box-shadow: 0px 0px 8px 0px rgba(34, 60, 80, 0.2);
                                             box-shadow: 0px 0px 8px 0px rgba(34, 60, 80, 0.2);">
                                             <div class="card-body">
                                                 <div class="">
-                                                    {{\App\Modules\Doctor\Entities\Doctor::doctorById($comment->doctor_id)->getFullName()}}
+                                                    {{$doctor->getFullName()}}
                                                 </div>
                                                 <small>
                                                     <p class="text-muted mb-0">
-                                                        {{\App\Modules\Doctor\Entities\Doctor::doctorById($comment->doctor_id)->post}}
+                                                        {{$doctor->post}}
                                                     </p>
                                                 </small>
                                                 <small>
                                                     <p class="text-muted">
-                                                        {{$comment->created_at}}
+                                                        {{$doctor->pivot->created_at}}
                                                     </p>
                                                 </small>
                                                 <hr>
                                                 <div>
                                                     <p class="lead">
-                                                        {{$comment->comment}}
+                                                        {{$doctor->pivot->comment}}
                                                     </p>
                                                 </div>
                                             </div>

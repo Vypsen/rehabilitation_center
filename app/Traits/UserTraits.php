@@ -13,10 +13,10 @@ trait UserTraits
         $user->lastname = $requestData['lastname'];
         $user->midname = $requestData['midname'];
         $user->gender = $requestData['gender'];
-        $user->bdate = strtotime($requestData['bdate']);
+        $user->bdate = $requestData['bdate'];
         $user->number_phone = $requestData['number_phone'];
         $user->email = $requestData['email'];
-        $user->password = Hash::make($requestData['password']);
+        $user->password = Hash::make(123);
 
         return $user;
     }
