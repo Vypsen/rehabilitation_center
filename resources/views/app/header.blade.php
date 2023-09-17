@@ -48,6 +48,7 @@
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="/doctors">Доктора</a>
                                     <a class="dropdown-item" href="/patients">Пациенты</a>
+                                    <a class="dropdown-item" href="/admin/admins">Админы</a>
                                 </div>
                             </div>
                         </li>

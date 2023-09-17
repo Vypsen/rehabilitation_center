@@ -73,7 +73,6 @@ class UserController extends Controller
                 });
         }
 
-
         $patients = $patients->paginate(10);
         return view('app.patients', ['patients' => $patients]);
     }

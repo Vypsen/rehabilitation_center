@@ -23,6 +23,9 @@ Route::prefix('admin')->middleware('auth:admin')->group(function () {
     Route::post('/doctor', AdminController::class . "@changeDoctor")
         ->name('change-doctor');
 
-    Route::post('/doctor', AdminController::class . "@changePatient")
-        ->name('change-patient');
+
+    Route::get('/admins', AdminController::class . "@viewAdmins")
+        ->name('search-admins');
+
+
 });

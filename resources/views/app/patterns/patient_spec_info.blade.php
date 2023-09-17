@@ -135,7 +135,7 @@
                 <input class="form-check-input" type="checkbox" name="shortness" value="1"
                        id="flexCheckDefault" {{$patient->shortness ? 'checked' : ''}}>
                 <label class="form-check-label" for="flexCheckDefault">
-                    Отдышка
+                    Одышка
                 </label>
             </div>
             <div class="form-check">
@@ -206,7 +206,7 @@
 <script>
     $(document).ready(function () {
         if ($('.patient-spec-info').hasClass('doctor')) {
-            $(this).find('input, textarea, select').attr('disabled', true);
+            $('.patient-spec-info').find('input, textarea, select').attr('disabled', true);
         }
     });
 </script>

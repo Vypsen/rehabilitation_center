@@ -33,4 +33,15 @@ class DoctorController extends Controller
 
         return true;
     }
+
+    public function setComment(Request $request)
+    {
+        $doctor = Auth::user();
+        $patientId = $request->input('patient_id');
+        $comment = $request->input('comment');
+
+        $doctor->patients()->attach($patientId, ['comment' => $comment]);
+
+        return true;
+    }
 }

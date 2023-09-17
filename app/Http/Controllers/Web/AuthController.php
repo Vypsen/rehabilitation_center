@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Mail\ConfirmMail;
 use App\Modules\Doctor\Entities\Doctor;
 use App\Modules\Patient\Entities\Patient;
 use App\Rules\ValidationPhoneRule;
 use Auth;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class AuthController extends Controller
 {
@@ -45,10 +47,10 @@ class AuthController extends Controller
             'number_phone' => ['required', new ValidationPhoneRule],
         ]);
 
-
         $user = Patient::createFormRequest($data);
 
         event(new Registered($user));
+
         Auth::guard('patient')->login($user);
         $request->session()->regenerate();
 

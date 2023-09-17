@@ -35,7 +35,6 @@ class Patient extends Authenticatable implements MustVerifyEmail
 {
     use UserTraits, HasApiTokens, HasFactory, Notifiable;
 
-
     protected $fillable = [
         'name',
         'lastname',
@@ -110,7 +109,7 @@ class Patient extends Authenticatable implements MustVerifyEmail
 
     public function notCanSkill()
     {
-        return $this->skills()->get()->toArray()[0];
+        return $this->lastSkills()->get()->toArray()[0];
     }
 
     public function lastSkills()

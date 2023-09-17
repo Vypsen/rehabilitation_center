@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8e6d17a7b0016723f8d75060cabd77b5",
+    "content-hash": "d92d04726cbaf94106cfa5e94f23757a",
     "packages": [
         {
             "name": "brick/math",
@@ -3889,6 +3889,40 @@
             "time": "2023-04-15T23:01:58+00:00"
         },
         {
+            "name": "smsaero/smsaero_api",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/smsaero/smsaero_api.git",
+                "reference": "139faddca2ad480f7d8b5215f93f9a1e7ea7e106"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/smsaero/smsaero_api/zipball/139faddca2ad480f7d8b5215f93f9a1e7ea7e106",
+                "reference": "139faddca2ad480f7d8b5215f93f9a1e7ea7e106",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SmsAero\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Библиотека для работы с API сервиса smsaero.ru",
+            "support": {
+                "issues": "https://github.com/smsaero/smsaero_api/issues",
+                "source": "https://github.com/smsaero/smsaero_api/tree/v1.0.0"
+            },
+            "time": "2023-03-28T00:46:01+00:00"
+        },
+        {
             "name": "symfony/console",
             "version": "v6.0.19",
             "source": {
@@ -6191,6 +6225,58 @@
             "time": "2023-01-03T09:29:04+00:00"
         },
         {
+            "name": "unisender/api-wrapper",
+            "version": "v1.6.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/unisender-dev/php-api-wrapper.git",
+                "reference": "2c0a932cf95829b4e943a2a248038f119491a15f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/unisender-dev/php-api-wrapper/zipball/2c0a932cf95829b4e943a2a248038f119491a15f",
+                "reference": "2c0a932cf95829b4e943a2a248038f119491a15f",
+                "shasum": ""
+            },
+            "require": {
+                "ext-iconv": "*",
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "ext-openssl": "*",
+                "php": ">=5.6.0"
+            },
+            "suggest": {
+                "ext-bz2": "Allows bzip2 compression"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Unisender\\ApiWrapper\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Unisender developers",
+                    "email": "devs@unisender.com"
+                }
+            ],
+            "description": "Unisender API wrapper",
+            "keywords": [
+                "api",
+                "extension",
+                "unisender"
+            ],
+            "support": {
+                "issues": "https://github.com/unisender-dev/php-api-wrapper/issues",
+                "source": "https://github.com/unisender-dev/php-api-wrapper/tree/v1.6.5"
+            },
+            "time": "2020-10-16T13:56:12+00:00"
+        },
+        {
             "name": "vlucas/phpdotenv",
             "version": "v5.5.0",
             "source": {
@@ -6470,6 +6556,55 @@
                 "source": "https://github.com/webmozarts/assert/tree/1.11.0"
             },
             "time": "2022-06-03T18:03:27+00:00"
+        },
+        {
+            "name": "zelenin/smsru",
+            "version": "5.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zelenin/sms_ru.git",
+                "reference": "b16efe92588fe74796332de5d20aa345b4437819"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zelenin/sms_ru/zipball/b16efe92588fe74796332de5d20aa345b4437819",
+                "reference": "b16efe92588fe74796332de5d20aa345b4437819",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "~6 || ~7",
+                "php": ">=5.5.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Zelenin\\SmsRu\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Aleksandr Zelenin",
+                    "email": "aleksandr@zelenin.me",
+                    "homepage": "http://zelenin.me",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PHP-класс для работы с api сервиса [sms.ru](http://sms.ru)",
+            "homepage": "https://github.com/zelenin/sms_ru",
+            "keywords": [
+                "api",
+                "sms",
+                "sms.ru"
+            ],
+            "support": {
+                "issues": "https://github.com/zelenin/sms_ru/issues",
+                "source": "https://github.com/zelenin/sms_ru"
+            },
+            "time": "2021-07-05T14:28:45+00:00"
         }
     ],
     "packages-dev": [

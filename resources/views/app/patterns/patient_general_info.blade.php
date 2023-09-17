@@ -314,7 +314,7 @@
                 </div>
                 <div class="form-check">
                     <label class="form-check-label" for="flexCheckChecked">
-                        Никтуория (если есть)
+                        Никтурия (если есть)
                     </label>
                     <div class="col-lg-4">
                         <input class="form-control" type="text" name="nikturia_count"
@@ -402,7 +402,7 @@
 <script>
     $(document).ready(function () {
         if ($('.patient-general-info').hasClass('doctor')) {
-            $(this).find('input, textarea, select').attr('disabled', true);
+            $('.patient-general-info').find('input, textarea, select').attr('disabled', true);
         }
     });
 </script>

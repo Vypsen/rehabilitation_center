@@ -16,30 +16,26 @@ box-shadow: 0px 0px 8px 4px rgba(34, 60, 80, 0.2);">
                                 </div>
                                 @foreach($exercises[key($exercises)] as $exercise)
                                     <div class="row my-2">
-                                        <div class=" col-lg-1">
+                                        <input class="col-lg-1 col-2">
                                             <input style="float: right" class="form-check-input" type="checkbox"
-                                                   id="check1" name="option1"
-                                                   value="something">
-                                        </div>
-                                        <div class="col-lg-11">
-                                            {{$exercise}}
-                                        </div>
+                                                   id="check1" name="option1"/>
                                     </div>
+                                    <hr class="d-xxl-none">
                                 @endforeach
                             </div>
                             <div class="col-lg-4">
-                                <div class="h4 pb-2">Рекомендации докторов</div>
+                                <div class="h4 pb-2 ps-3">Рекомендации докторов</div>
                                 @foreach($doctors as $doctor)
                                     <div class="container mb-3" style="">
-                                        <div class="card" style="-webkit-box-shadow: 0px 0px 8px 0px rgba(34, 60, 80, 0.2);
-                                            -moz-box-shadow: 0px 0px 8px 0px rgba(34, 60, 80, 0.2);
-                                            box-shadow: 0px 0px 8px 0px rgba(34, 60, 80, 0.2);">
+                                        <div class="card" style="-webkit-box-shadow: 0 0 8px 0 rgba(34, 60, 80, 0.2);
+                                            -moz-box-shadow: 0 0 8px 0 rgba(34, 60, 80, 0.2);
+                                            box-shadow: 0 0 8px 0 rgba(34, 60, 80, 0.2);">
                                             <div class="card-body">
                                                 <div class="">
                                                     {{$doctor->getFullName()}}
                                                 </div>
                                                 <small>
-                                                    <p class="text-muted mb-0">
+                                                    <p class="text-muted">
                                                         {{$doctor->post}}
                                                     </p>
                                                 </small>
@@ -69,7 +65,6 @@ box-shadow: 0px 0px 8px 4px rgba(34, 60, 80, 0.2);">
         .form-check-input:checked {
             background-color: #199c68;
             border-color: #199c68;
-
         }
     </style>
 @endsection

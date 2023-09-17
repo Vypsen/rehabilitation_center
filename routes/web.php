@@ -36,6 +36,12 @@ Route::middleware(['auth:doctor,patient,admin'])->group(function () {
         return redirect('/my');
     })->middleware('signed')->name('verification.verify');
 
+    Route::post('/email/verification-notification', function (Request $request) {
+        Auth::user()->sendEmailVerificationNotification();
+
+        return back()->with('message', 'Verification link sent!');
+    })->middleware('throttle:6,1')->name('verification.send');
+
     Route::post('/logout', AuthController::class . '@logout')
         ->name('logout');
 });
@@ -46,4 +52,6 @@ Route::middleware(['auth:doctor,admin'])->group(function () {
 
     Route::get('/patient/{id}', UserController::class . "@patient")->name('view-patient');
 });
+
+
 

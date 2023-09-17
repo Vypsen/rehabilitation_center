@@ -2,12 +2,15 @@
 
 namespace App\Modules\Doctor\Entities;
 
+use App\Mail\User\PasswordMail;
 use App\Modules\Patient\Entities\Patient;
 use App\Traits\UserTraits;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Laravel\Sanctum\HasApiTokens;
 
 /**
@@ -38,7 +41,9 @@ class Doctor extends Authenticatable implements MustVerifyEmail
         'email',
         'gender',
         'bdate',
-        'post'
+        'post',
+        'password',
+        'email_verified_at'
     ];
 
     /**
@@ -78,4 +83,16 @@ class Doctor extends Authenticatable implements MustVerifyEmail
         return self::query()->where('id', $id)->first();
     }
 
+    static public function create($data)
+    {
+        $password = \Str::random(8);
+        $data['password'] = Hash::make($password);
+        $data['email_verified_at'] = \Date::now();
+
+        if ($doctor = self::createUser($data)) {
+            Mail::to($data['email'])->send(new PasswordMail($password));
+        }
+
+        return $doctor;
+    }
 }

@@ -17,7 +17,10 @@
         "laravel/tinker": "^2.7",
         "laravel/ui": "^4.0",
         "nwidart/laravel-modules": "^9.0",
-        "vyuldashev/laravel-openapi": "^1.8"
+        "smsaero/smsaero_api": "^1.0",
+        "unisender/api-wrapper": "^1.6",
+        "vyuldashev/laravel-openapi": "^1.8",
+        "zelenin/smsru": "~5"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.8",

@@ -2,21 +2,16 @@
 
 namespace App\Traits;
 
-use Illuminate\Support\Facades\Hash;
+use App\Mail\User\PasswordMail;
+use Illuminate\Support\Facades\Mail;
 
 trait UserTraits
 {
-    public static function createFormRequest(array $requestData): self
+    protected static function createUser(array $requestData): self
     {
         $user = new self();
-        $user->name = $requestData['name'];
-        $user->lastname = $requestData['lastname'];
-        $user->midname = $requestData['midname'];
-        $user->gender = $requestData['gender'];
-        $user->bdate = $requestData['bdate'];
-        $user->number_phone = $requestData['number_phone'];
-        $user->email = $requestData['email'];
-        $user->password = Hash::make(123);
+        $user->fill($requestData);
+        $user->save();
 
         return $user;
     }

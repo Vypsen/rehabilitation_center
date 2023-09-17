@@ -1,7 +1,6 @@
 <div class="container-fluid skills {{$role}}">
 {{--    <h4><b>Навыки пациента</b></h4>--}}
     <div class="col-lg-12 text-center mt-2">
-        <form method="POST" action="{{ route('skills.post') }}">
             @csrf
             @foreach($skills as $skill)
                 <div class="row skill">
@@ -22,14 +21,13 @@
                     </div>
                 </div>
             @endforeach
-        </form>
     </div>
 </div>
 
 <script>
     $(document).ready(function () {
         if ($('.skills').hasClass('doctor')) {
-            $(this).find('input, textarea, select').attr('disabled', true);
+            $('.skills').find('input, textarea, select').attr('disabled', true);
         }
     });
 </script>
