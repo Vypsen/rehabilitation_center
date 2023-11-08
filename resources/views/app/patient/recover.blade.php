@@ -16,9 +16,14 @@ box-shadow: 0px 0px 8px 4px rgba(34, 60, 80, 0.2);">
                                 </div>
                                 @foreach($exercises[key($exercises)] as $exercise)
                                     <div class="row my-2">
-                                        <input class="col-lg-1 col-2">
+                                        <div class=" col-lg-1">
                                             <input style="float: right" class="form-check-input" type="checkbox"
-                                                   id="check1" name="option1"/>
+                                                   id="check1" name="option1"
+                                                   value="something">
+                                        </div>
+                                        <div class="col-lg-11">
+                                            {{$exercise}}
+                                        </div>
                                     </div>
                                     <hr class="d-xxl-none">
                                 @endforeach

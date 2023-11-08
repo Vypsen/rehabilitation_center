@@ -19,14 +19,14 @@
         <label for="address"> Адрес </label>
         <input id="address" type="text"
                class="form-control" name="address"
-               value="{{$patient->address}}"
-        >
+               value="{{$patient->address}}">
     </div>
     <div class="row my-3">
         <div class="col-xxl-12">
             <label for="address"> ФИО и телефоны родственников: </label>
             <textarea id="relatives_info" type="text" class="form-control"
-                      name="relatives_info">{{$patient->relatives_info}}</textarea>
+                      name="relatives_info">{{$patient->relatives_info}}
+            </textarea>
         </div>
     </div>
     <div class="row my-3">

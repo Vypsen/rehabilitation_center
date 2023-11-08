@@ -131,7 +131,7 @@
                         </div>
                     </div>
                     <div class="col-xxl-5 col-md-12 position-relative">
-                        <div class="position-fixed w-25">
+                        <div class="position-sticky" style="top: 100px">
                             <form method="POST" id="set-comment" action="{{ route('set-comment.post') }}">
                                 @csrf
                                 <div class="mb-2">
