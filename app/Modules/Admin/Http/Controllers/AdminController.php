@@ -26,7 +26,7 @@ class AdminController extends Controller
     public function createDoctor(Request $request)
     {
         $request->validate([
-            'email' => 'required|unique:doctors',
+            'email' => 'required|unique:doctors|unique:patients|unique:admins',
             'number_phone' => ['required', new ValidationPhoneRule],
         ]);
 
@@ -37,7 +37,7 @@ class AdminController extends Controller
     public function createAdmin(Request $request)
     {
         $request->validate([
-            'email' => 'required|unique:admins',
+            'email' => 'required|unique:doctors|unique:patients|unique:admins',
             'number_phone' => ['required', new ValidationPhoneRule],
         ]);
 
@@ -57,6 +57,14 @@ class AdminController extends Controller
 
         $admins = $admins->paginate(10);
         return view('app.admin.admins', ['admins' => $admins]);
+    }
+
+    public function viewDoctorInfo($id)
+    {
+        if (!Auth::guard('admin')) return route('error');
+
+        $doctor = Doctor::query()->find($id);
+        return view('app.admin.doctor', ['doctor' => $doctor]);
     }
 
 }

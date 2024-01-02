@@ -11,6 +11,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Laravel\Sanctum\HasApiTokens;
+use function PHPUnit\Framework\exactly;
 
 /**
  * @property int $id
@@ -42,6 +43,7 @@ class Admin extends Authenticatable implements MustVerifyEmail
         'gender',
         'bdate',
         'email_verified_at',
+        'password'
     ];
 
     /**

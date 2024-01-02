@@ -68,7 +68,7 @@ class UserController extends Controller
         }
         if (!empty($data['doctor_lastname'])) {
             $patients
-                ->whereHas('doctor', function ($query) use ($data) {
+                ->whereHas('doctors', function ($query) use ($data) {
                     $query->where('lastname', 'ilike', '%' . $data['doctor_lastname'] . '%');
                 });
         }

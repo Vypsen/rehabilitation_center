@@ -15,7 +15,7 @@ return [
 
     'defaults' => [
         'guard' => 'web',
-        'passwords' => 'users',
+        'passwords' => 'patients',
     ],
 
     /*
@@ -38,7 +38,7 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'patients',
         ],
         'patient' => [
             'driver' => 'session',
@@ -83,11 +83,6 @@ return [
             'model' => \App\Modules\Doctor\Entities\Doctor::class,
         ],
 
-        'users' => [
-            'driver' => 'eloquent',
-            'model' => \App\Modules\User\Entities\User::class,
-        ],
-
         'admins' => [
             'driver' => 'eloquent',
             'model' => \App\Modules\Admin\Entities\Admin::class,
@@ -110,8 +105,20 @@ return [
     */
 
     'passwords' => [
-        'users' => [
-            'provider' => 'users',
+        'patients' => [
+            'provider' => 'patients',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'doctors' => [
+            'provider' => 'doctors',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'admins' => [
+            'provider' => 'admins',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

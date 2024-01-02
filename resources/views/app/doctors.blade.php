@@ -12,8 +12,13 @@
                                 <input type="text" value="{{ request('doctor') }}" name="doctor" class="form-control"
                                        placeholder="Фамилия или должность">
                             </div>
-                            <div class="col-md-2">
-                                <button class="btn btn-success">Найти</button>
+                            <div class="col d-flex">
+                                <div class="me-4">
+                                    <button class="btn btn-success">Найти</button>
+                                </div>
+                                <div class="">
+                                    <a type="button" href="/admin/create/doctor" class="text-white btn btn-info">Создать</a>
+                                </div>
                             </div>
                         </div>
                     </form>
@@ -25,15 +30,16 @@
                             <div class="row card-body">
                                 <div class="">
                                     <div class="">
-                                        <a href="" class="link-secondary text-decoration-none"
-                                           style="border-bottom: 1px dashed grey;">{{ $doctor->getFullName() }}</a><a title="Найти пациетов" class="link-success ms-2" href="" ><i class="fa-solid fa-magnifying-glass"></i></a>
+                                        <a href="{{route('view-doctor', ['id' => $doctor->id])}}" class="link-secondary text-decoration-none"
+                                           style="border-bottom: 1px dashed grey;">{{ $doctor->getFullName() }}</a>
+                                        <a title="Найти пациетов" class="link-success ms-2"
+                                           href="{{ route('search-patients', ['doctor_lastname' => $doctor->lastname]) }}">
+                                            <i class="fa-solid fa-magnifying-glass"></i>
+                                        </a>
                                     </div>
                                     <div class="">Должность: <b>{{ $doctor->post}}</b></div>
                                     <div class="">e-mail: <b>{{ $doctor->email}}</b></div>
                                     <div class="">Номер телефона: <b>{{ $doctor->number_phone}}</b></div>
-                                </div>
-                                <div class="">
-
                                 </div>
                             </div>
                         </div>

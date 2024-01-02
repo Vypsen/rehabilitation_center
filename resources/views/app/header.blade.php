@@ -48,7 +48,19 @@
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="/doctors">Доктора</a>
                                     <a class="dropdown-item" href="/patients">Пациенты</a>
-                                    <a class="dropdown-item" href="/admin/admins">Админы</a>
+                                    <a class="dropdown-item" href="/admin/admins">Администраторы</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="d-flex dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#"
+                                   role="button"
+                                   data-bs-toggle="dropdown"> Создать
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="/admin/create/doctor">Доктора</a>
+                                    <a class="dropdown-item" href="/admin/create/admin">Администраторы</a>
                                 </div>
                             </div>
                         </li>
@@ -57,14 +69,13 @@
                 <div class="d-flex dropdown">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" role="button"
                        data-bs-toggle="dropdown">
-                        {{ Auth::user()->name }}
+                        {{ Auth::user()->getFullName() }}
                     </a>
                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="/my">Профиль</a>
                         <a class="dropdown-item" href="{{ route('logout') }}"
                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Выйти
                         </a>
-
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                             @csrf
                         </form>

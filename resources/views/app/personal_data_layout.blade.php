@@ -40,6 +40,12 @@
                                 <a class="nav-link {{ Request::url() == route('search-admins') ? 'active' : '' }}" href="{{route('search-admins')}}">
                                     <i class="fa-solid fa-user-gear me-1"></i>Админы
                                 </a>
+                                <a class="nav-link {{ Request::url() == route('search-patients') ? 'active' : '' }}" href="{{route('search-patients')}}">
+                                    <i class="fs-5 fa-solid fa-person-cane me-2"></i>Пациенты
+                                </a>
+                                <a class="nav-link {{ Request::url() == route('search-doctors') ? 'active' : '' }}" href="{{route('search-doctors')}}">
+                                    <i class="fa-solid fa-user-doctor me-2"></i>Врачи
+                                </a>
                             @endauth
                             @auth('doctor')
                                 <a class="nav-link {{ Request::url() == route('search-patients') ? 'active' : '' }}" href="{{route('search-patients')}}">

@@ -13,16 +13,16 @@
                             <div class="col-md-4">
                                 <input type="text" name="patient" class="form-control" value="{{ request('patient') }}"
                                        placeholder="Фамилия пациента">
-                                {{--                                @auth('doctor')--}}
-                                {{--                                    <div class="form-check mt-2 ms-2">--}}
-                                {{--                                        <input class="form-check-input" name="my_patients"--}}
-                                {{--                                               {{request('my_patients') ? 'checked' : ''}} type="checkbox"--}}
-                                {{--                                               id="inlineFormCheck">--}}
-                                {{--                                        <label class="form-check-label" for="inlineFormCheck">--}}
-                                {{--                                            Мои пациенты--}}
-                                {{--                                        </label>--}}
-                                {{--                                    </div>--}}
-                                {{--                                @endauth--}}
+                                @auth('doctor')
+                                    <div class="form-check mt-2 ms-2">
+                                        <input class="form-check-input" name="my_patients"
+                                               {{request('my_patients') ? 'checked' : ''}} type="checkbox"
+                                               id="inlineFormCheck">
+                                        <label class="form-check-label" for="inlineFormCheck">
+                                            Мои пациенты
+                                        </label>
+                                    </div>
+                                @endauth
                             </div>
                             <div class="col-md-4">
                                 <input type="text" name="doctor_lastname" class="form-control"

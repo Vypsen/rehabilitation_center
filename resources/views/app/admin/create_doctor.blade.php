@@ -11,7 +11,7 @@
                 @csrf
                 <div class="m-auto">
                     <div class="row mb-3">
-                        <label for="lastname"  class="col-sm-2 col-xxl-2 col-form-label">Фамилия</label>
+                        <label for="lastname" class="col-sm-2 col-xxl-2 col-form-label">Фамилия</label>
                         <div class="col-sm-10 col-xxl-6">
                             <input type="text" required name="lastname" class="form-control"
                                    id="lastname">
@@ -67,7 +67,7 @@
                         <div class="col-sm-4 col-xxl-4">
                             <input id="number_phone" type="tel"
                                    class="form-control @error('number_phone') is-invalid @enderror" name="number_phone"
-                                   required ><small>Формат: +79ХХХХХХХХХ</small>
+                                   required><small>Формат: +79ХХХХХХХХХ</small>
 
                             @error('number_phone')
                             <span class="invalid-feedback" role="alert">
@@ -79,7 +79,13 @@
                     <div class="row mb-3">
                         <label for="email" class="col-sm-2 col-xxl-2 col-form-label">E-mail</label>
                         <div class="col-sm-10 col-xxl-6">
-                            <input type="text" required name="email" class="form-control" id="email">
+                            <input type="text" required name="email"
+                                   class="form-control @error('email') is-invalid @enderror" id="email">
+                            @error('email')
+                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                            @enderror
                         </div>
                     </div>
                 </div>

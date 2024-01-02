@@ -63,7 +63,7 @@
                                     <button type="submit" class="btn btn-success">
                                         Войти
                                     </button>
-                                    <a class="btn btn-link" href="">
+                                    <a class="btn btn-link" href="/auth/forgot-password">
                                         Забыли пароль?
                                     </a>
                                 </div>

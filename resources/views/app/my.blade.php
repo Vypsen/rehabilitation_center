@@ -3,8 +3,7 @@
 @section('info')
     <div class="container-fluid">
         <div class="mb-4">
-            <h4>{{$user->getFullName()}}
-                , {{$user->getAge()}} <?= $user->gender == 'М' ? "<b style='color:blue'>М</b>" : "<b style='color:pink'>Ж</b>" ?> </h4>
+            <h4>{{$user->getFullName()}}, {{$user->getAge()}} <?= $user->gender == 'М' ? "<b style='color:blue'>М</b>" : "<b style='color:pink'>Ж</b>" ?> </h4>
             <hr>
         </div>
         <div class="col-lg-12">
@@ -78,6 +77,12 @@
                         <label for="email" class="col-sm-2 col-xxl-2 col-form-label">E-mail</label>
                         <div class="col-sm-10 col-xxl-6">
                             <input type="text" name="email" class="form-control" value="{{$user->email}}" id="email">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="password" class="col-sm-2 col-xxl-2 col-form-label">Пароль</label>
+                        <div class="col-sm-10 col-xxl-6">
+                            <input type="password" name="password" autocomplete="off" placeholder="если пароль менять не надо - оставьте поле пустым" class="form-control" id="password">
                         </div>
                     </div>
                 </div>

@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\Web\AuthController;
 use App\Http\Controllers\Web\UserController;
+use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
 
 Route::get('/', function (Request $request) {
@@ -17,6 +19,51 @@ Route::prefix('auth')->group(function () {
     Route::get('/login', AuthController::class . "@loginView")->name('login');
     Route::post('/login', AuthController::class . "@login")
         ->name('login.post');
+
+    Route::get('/forgot-password', function () {
+        return view('auth.forgot-password');
+    })->middleware('guest')->name('password.request');
+
+    Route::post('/forgot-password', function (Request $request) {
+        $request->validate(['email' => 'required|email']);
+
+        $status = Password::sendResetLink(
+            $request->only('email')
+        );
+
+        return $status === Password::RESET_LINK_SENT
+            ? back()->with(['status' => __($status)])
+            : back()->withErrors(['email' => __($status)]);
+    })->middleware('guest')->name('password.email');
+
+    Route::get('/reset-password/{token}', function ($token) {
+        return view('auth.reset-password', ['token' => $token]);
+    })->middleware('guest')->name('password.reset');
+
+    Route::post('/reset-password', function (Request $request) {
+         $request->validate([
+            'token' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|confirmed',
+        ]);
+
+        $status = Password::reset(
+            $request->only('email', 'password', 'password_confirmation', 'token'),
+            function ($user, $password) {
+                $user->forceFill([
+                    'password' => Hash::make($password)
+                ])->setRememberToken(Str::random(60));
+
+                $user->save();
+
+                event(new PasswordReset($user));
+            }
+        );
+
+        return $status === Password::PASSWORD_RESET
+            ? redirect()->route('login')->with('status', __($status))
+            : back()->withErrors(['email' => [__($status)]]);
+    })->middleware('guest')->name('password.update');
 });
 
 
@@ -53,5 +100,6 @@ Route::middleware(['auth:doctor,admin'])->group(function () {
     Route::get('/patient/{id}', UserController::class . "@patient")->name('view-patient');
 });
 
-
-
+Route::get('/error', function () {
+    return 123;
+})->name('error');

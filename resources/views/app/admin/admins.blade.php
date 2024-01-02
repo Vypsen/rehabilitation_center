@@ -12,8 +12,13 @@
                                 <input type="text" value="{{ request('admin') }}" name="admin" class="form-control"
                                        placeholder="Фамилия">
                             </div>
-                            <div class="col-md-2">
-                                <button class="btn btn-success">Найти</button>
+                            <div class="col d-flex">
+                                <div class="me-4">
+                                    <button class="btn btn-success">Найти</button>
+                                </div>
+                                <div class="">
+                                    <a type="button" href="/admin/create/admin" class="text-white btn btn-info">Создать</a>
+                                </div>
                             </div>
                         </div>
                     </form>

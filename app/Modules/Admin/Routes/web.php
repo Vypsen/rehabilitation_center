@@ -17,15 +17,12 @@ Route::prefix('admin')->middleware('auth:admin')->group(function () {
             ->name('create-admin.post');
     });
 
-    Route::get('/doctor', AdminController::class . "@viewDoctor")
+    Route::get('/doctor/{id}', AdminController::class . "@viewDoctorInfo")
         ->name('view-doctor');
 
-    Route::post('/doctor', AdminController::class . "@changeDoctor")
-        ->name('change-doctor');
-
+//    Route::post('/doctor', AdminController::class . "@changeDoctor")
+//        ->name('change-doctor');
 
     Route::get('/admins', AdminController::class . "@viewAdmins")
         ->name('search-admins');
-
-
 });

@@ -7,7 +7,7 @@
             <hr>
         </div>
         <div class="col-lg-12">
-            <form method="POST" action="{{route('create-doctor.post')}}">
+            <form method="POST" action="{{route('create-admin.post')}}">
                 @csrf
                 <div class="m-auto">
                     <div class="row mb-3">
@@ -73,7 +73,12 @@
                     <div class="row mb-3">
                         <label for="email" class="col-sm-2 col-xxl-2 col-form-label">E-mail</label>
                         <div class="col-sm-10 col-xxl-6">
-                            <input type="text" required name="email" class="form-control" id="email">
+                            <input type="text" required name="email" class="form-control @error('email') is-invalid @enderror" id="email">
+                            @error('email')
+                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                            @enderror
                         </div>
                     </div>
                 </div>

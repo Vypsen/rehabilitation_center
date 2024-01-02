@@ -2,8 +2,6 @@
 
 namespace App\Traits;
 
-use App\Mail\User\PasswordMail;
-use Illuminate\Support\Facades\Mail;
 
 trait UserTraits
 {
