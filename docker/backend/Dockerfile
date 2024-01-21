@@ -1,6 +1,6 @@
 FROM php:8.0-fpm
 
-RUN sudo apt-get update && sudo apt-get install -y \
+RUN/ apt-get update && apt-get install -y \
     build-essential \
     libpng-dev \
     libjpeg62-turbo-dev \
@@ -21,15 +21,15 @@ RUN sudo apt-get update && sudo apt-get install -y \
     docker-php-ext-configure gd --with-freetype --with-jpeg && \
     docker-php-ext-install gd
 
-RUN sudo curl -sL https://deb.nodesource.com/setup_14.x | bash -
-RUN sudo apt-get install -y nodejs
+RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
+RUN apt-get install -y nodejs
 
 ENV COMPOSER_ALLOW_SUPERUSER=1
-RUN sudo curl -sS https://getcomposer.org/installer | php -- \
+RUN curl -sS https://getcomposer.org/installer | php -- \
     --filename=composer \
     --install-dir=/usr/local/bin \
 
-USER civz
+USER root
 EXPOSE 9000
 
 CMD ["php-fpm"]
