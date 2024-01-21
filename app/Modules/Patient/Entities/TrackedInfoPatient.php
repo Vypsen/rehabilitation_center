@@ -7,14 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * @property int $id
  * @property int $patient_id
- * @property bool|null $hand_tactility
- * @property bool|null $hand_t
- * @property bool|null $hand_pain
- * @property bool|null $hand_musculoskeletal_feeling
- * @property bool|null $leg_tactility
- * @property bool|null $leg_t
- * @property bool|null $leg_pain
- * @property bool|null $leg_musculoskeletal_feeling
+ * @property int|null $hand_tactility
+ * @property int|null $hand_t
+ * @property int|null $hand_pain
+ * @property int|null $hand_musculoskeletal_feeling
+ * @property int|null $leg_tactility
+ * @property int|null $leg_t
+ * @property int|null $leg_pain
+ * @property int|null $leg_musculoskeletal_feeling
  * @property string|null $type_disorder
  * @property string|null $memory_loss
  * @property string|null $orientation

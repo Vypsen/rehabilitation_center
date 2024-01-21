@@ -29,7 +29,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- \
     --filename=composer \
     --install-dir=/usr/local/bin \
 
-USER root
+USER civz
 EXPOSE 9000
 
 CMD ["php-fpm"]

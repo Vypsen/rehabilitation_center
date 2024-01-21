@@ -25,7 +25,7 @@
                         </li>
                     @endauth
                     @auth('doctor')
-                        <li class="nav-item">
+                        <li class="nav-item ms-3">
                             <div class="d-flex dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#"
                                    role="button"
@@ -34,6 +34,30 @@
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="/doctors">Доктора</a>
                                     <a class="dropdown-item" href="/patients">Пациенты</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item ms-3">
+                            <div class="d-flex dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#"
+                                   role="button"
+                                   data-bs-toggle="dropdown"> Шкалы
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="/">Просмотр</a>
+                                    <a class="dropdown-item" href="{{route('create-scale')}}">Добавить</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item ms-3">
+                            <div class="d-flex dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#"
+                                   role="button"
+                                   data-bs-toggle="dropdown"> Тесты
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="/">Просмотр</a>
+                                    <a class="dropdown-item" href="{{route('create-scale')}}">Добавить</a>
                                 </div>
                             </div>
                         </li>
@@ -85,7 +109,9 @@
         </div>
     </nav>
 
-    <div style="background: -webkit-linear-gradient(90deg, rgb(147,232,179), rgb(107,222,152), rgb(90,204,135), rgb(77,182,117)) no-repeat;" class="min-vh-100">
+    <div
+        style="background: -webkit-linear-gradient(90deg, rgb(147,232,179), rgb(107,222,152), rgb(90,204,135), rgb(77,182,117)) no-repeat;"
+        class="min-vh-100">
         <div style="padding: 10vh 0;" class="container-fluid">
             @yield('app')
         </div>
