@@ -8,6 +8,7 @@ use App\Modules\Patient\Entities\Patient;
 use App\Rules\ValidationPhoneRule;
 use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use function Termwind\render;
 
 class UserController extends Controller
@@ -33,10 +34,10 @@ class UserController extends Controller
             'number_phone' => ['required', new ValidationPhoneRule],
         ]);
 
-
         $data = $request->all();
-
+        $user->password = Hash::make(($request->post()['password']));
         $user->fill($data);
+
         $user->save();
 
         return redirect('/');

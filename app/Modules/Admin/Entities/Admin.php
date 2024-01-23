@@ -43,7 +43,6 @@ class Admin extends Authenticatable implements MustVerifyEmail
         'gender',
         'bdate',
         'email_verified_at',
-        'password'
     ];
 
     /**
